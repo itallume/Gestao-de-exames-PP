@@ -4,8 +4,8 @@
 
 - **Itallo Oliveira** - 20231370014  
 - **João Paulo** - 20231370018  
-- **Lauro Stephan** - 20231370020  
-- **Fernando Júlio** - 20231370019
+- **Lauro Stephan** - 20231370026  
+- **Fernando Júlio** - 
 
 ## 📚 Descrição do Projeto
 
