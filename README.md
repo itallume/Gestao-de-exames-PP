@@ -1,5 +1,12 @@
 # 🏥 Sistema de Gerenciamento de Exames Médicos - IF Diagnósticos
 
+## 👥 Equipe
+
+- **Itallo Oliveira** - 20231370014  
+- **João Paulo** - 20231370018  
+- **Lauro Stephan** - 20231370020  
+- **Fernando Júlio** - 20231370019
+
 ## 📚 Descrição do Projeto
 
 Este projeto foi desenvolvido para a disciplina Padrões de projeto, que tem como objetivo de atender às necessidades da clínica **IF Diagnósticos** (Fictícia), com foco na automatização da geração de laudos médicos, notificações de pacientes e aplicação de políticas flexíveis como descontos e gerenciamento de prioridades. O sistema foi arquitetado com **padrões de projeto** para garantir **extensibilidade**, **manutenção simplificada** e **reusabilidade de código**.
