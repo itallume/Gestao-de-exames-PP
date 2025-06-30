@@ -26,6 +26,7 @@ O sistema cumpre os requisitos funcionais descritos no enunciado da atividade, t
 - ✅ Notificação automática do paciente (`R6`)
 - ✅ Aplicação de políticas de desconto dinâmicas (`R7`)
 - ✅ Priorização de exames por urgência (`R8`)
+- ✅ Logs da aplicação (`R10`)
 
 ---
 
@@ -40,6 +41,7 @@ O sistema cumpre os requisitos funcionais descritos no enunciado da atividade, t
 | `R6` | **Observer + State** | Padrão Observer notifica o paciente quando o laudo estiver pronto, e o State gerencia o estado da notificação (pendente, enviada, falhou). |
 | `R7` | **Strategy** | Aplicação de políticas de desconto configuráveis (idoso, convênio, campanhas). Estratégias podem ser adicionadas sem alterar a lógica principal. |
 | `R8` | **Priority Queue (Comportamental)** | Fila de prioridade organiza os exames com base em rótulos: URGENTE, POUCO URGENTE e ROTINA. |
+| `R10` | **Singleton** | Armazena os logs da aplicação |
 
 ---
 
