@@ -1,4 +1,4 @@
-package org.example.entities;
+package org.example.entities.abstracts;
 
 public abstract class ExameEndoscopico extends ExameTipo{
 

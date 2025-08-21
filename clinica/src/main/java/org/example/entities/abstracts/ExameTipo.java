@@ -1,6 +1,9 @@
-package org.example.entities;
+package org.example.entities.abstracts;
 
 import java.util.List;
+
+import org.example.entities.interfaces.ILaudo;
+import org.example.entities.models.Paciente;
 
 public abstract class ExameTipo {
     private ILaudo laudo;

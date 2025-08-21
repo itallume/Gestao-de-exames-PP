@@ -1,5 +1,7 @@
 package org.example.entities;
 
+import org.example.entities.interfaces.ILaudo;
+
 public class LaudoTxt implements ILaudo{
     @Override
     public Object gerarDocumento(Object dadosLaudo) {
