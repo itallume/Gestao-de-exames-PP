@@ -2,6 +2,8 @@ package org.example.entities;
 
 import java.util.List;
 
+import org.example.entities.abstracts.ValidadorEndoscopico;
+
 public class ValidadorGravidez extends ValidadorEndoscopico{
 
     @Override
