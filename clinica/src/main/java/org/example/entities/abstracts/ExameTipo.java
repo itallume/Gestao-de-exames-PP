@@ -2,6 +2,7 @@ package org.example.entities.abstracts;
 
 import java.util.List;
 
+import org.example.entities.interfaces.ExameVisitor;
 import org.example.entities.interfaces.ILaudo;
 import org.example.entities.interfaces.INotificador;
 import org.example.entities.interfaces.IValidador;
@@ -18,4 +19,5 @@ public abstract class ExameTipo {
     public abstract void removerSubsribe(INotificador notificador);
     public abstract void notificarTodos();
     public abstract Object gerarLaudo(Object dados);
+    public abstract <T> T aceitar(ExameVisitor<T> visitor);
 }
