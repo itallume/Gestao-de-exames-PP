@@ -8,6 +8,4 @@ public interface ExameVisitor<T> {
     T visitarExame(ExameSangue exameSangue);
     T visitarExame(ExameRaioX exameRaioX);
     T VisitarExame(ExameColonoscopia exameColonoscopia);
-
-
 }
