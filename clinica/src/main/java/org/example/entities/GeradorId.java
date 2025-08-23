@@ -1,10 +1,11 @@
-package clinica.src.main.java.org.example.entities;
+package org.example.entities;
 
 public class GeradorId {
     private static GeradorId instance = null;
     private int contador = 0;
 
-    private GeradorId() {}
+    private GeradorId() {
+    }
 
     public GeradorId getInstance() {
         if (instance == null) {
