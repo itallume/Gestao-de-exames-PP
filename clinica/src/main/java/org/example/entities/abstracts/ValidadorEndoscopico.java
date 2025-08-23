@@ -4,7 +4,7 @@ import org.example.entities.interfaces.IValidador;
 import java.util.List;
 
 public abstract class ValidadorEndoscopico implements IValidador {
-    private IValidador proximo;
+    protected IValidador proximo;
 
     @Override
     public IValidador setProximo(IValidador proximo) {
