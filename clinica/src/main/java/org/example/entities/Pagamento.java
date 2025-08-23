@@ -11,7 +11,6 @@ import java.util.List;
 
 public class Pagamento implements Desconto {
     private List<Exame> exames;
-    //TODO desconto
     private Date dataPagamento;
     private Paciente paciente;
 
@@ -28,8 +27,9 @@ public class Pagamento implements Desconto {
         return preco;
     }
 
-    public void pagar(ExameVisitor<Double> visitor) throws Exception {
+    public void pagar() throws Exception {
         for (Exame e : exames){
+            System.out.println("Pagando exame de Id: "+ e.getId());
             e.setPago(true);
         }
 

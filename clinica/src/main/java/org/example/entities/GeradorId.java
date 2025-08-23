@@ -14,7 +14,7 @@ public class GeradorId {
         return instance;
     }
 
-    public int gerar() {
+    public int gerarId() {
         return ++contador;
     }
 }

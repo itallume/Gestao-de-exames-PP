@@ -2,13 +2,16 @@ package org.example.entities.abstracts;
 
 import java.util.List;
 
+import lombok.Data;
 import org.example.entities.interfaces.ExameVisitor;
 import org.example.entities.interfaces.ILaudo;
 import org.example.entities.interfaces.INotificador;
 import org.example.entities.interfaces.IValidador;
 import org.example.entities.models.Paciente;
 
+@Data
 public abstract class ExameTipo {
+    private int id;
     private ILaudo laudo;
     private List<INotificador> notificadores;
     private Paciente paciente;
