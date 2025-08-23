@@ -1,5 +1,6 @@
 package org.example.entities;
 
+import org.example.entities.interfaces.Desconto;
 import org.example.entities.interfaces.ExameVisitor;
 import org.example.entities.models.Exame;
 import org.example.entities.models.Paciente;
@@ -8,7 +9,7 @@ import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 
-public class Pagamento {
+public class Pagamento implements Desconto {
     private List<Exame> exames;
     //TODO desconto
     private Date dataPagamento;
@@ -19,8 +20,7 @@ public class Pagamento {
         this.paciente = paciente;
     }
 
-    public double calcularPreco(ExameVisitor<Double> visitor){
-        //TODO Desconto
+    public Double calcularPreco(ExameVisitor<Double> visitor){
         double preco = 0;
         for (Exame e : exames){
             preco += e.calcularPreco(visitor);
@@ -28,12 +28,7 @@ public class Pagamento {
         return preco;
     }
 
-    //receber descxonto
-    public void pagar(double valorRecebido, ExameVisitor<Double> visitor) throws Exception {
-        if (!(valorRecebido == this.calcularPreco(visitor))){
-            throw new Exception("Valor insuficiente");
-        }
-
+    public void pagar(ExameVisitor<Double> visitor) throws Exception {
         for (Exame e : exames){
             e.setPago(true);
         }
