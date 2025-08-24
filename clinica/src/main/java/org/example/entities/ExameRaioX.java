@@ -1,32 +1,32 @@
 package org.example.entities;
 
+import lombok.Data;
 import org.example.entities.abstracts.ExameImagem;
 import org.example.entities.interfaces.ExameVisitor;
 import org.example.entities.interfaces.INotificador;
 
+import java.util.Map;
+
+@Data
 public class ExameRaioX extends ExameImagem{
+
     @Override
-    public void adicionarSubsribe(INotificador notificador) {
+    public void preencherDados(Map<String, String> dados) {
 
     }
 
     @Override
-    public void removerSubsribe(INotificador notificador) {
-
-    }
-
-    @Override
-    public void notificarTodos() {
-
-    }
-
-    @Override
-    public Object gerarLaudo(Object dados) {
+    public Object gerarLaudo() {
         return null;
     }
 
     @Override
     public <T> T aceitar(ExameVisitor<T> visitor) {
         return visitor.visitarExame(this);
+    }
+
+    @Override
+    public void realizarExame() {
+        System.out.println("Realizando exame de RaioX do paciente: "+ getPaciente().getNome());
     }
 }

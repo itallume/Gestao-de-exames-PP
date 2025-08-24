@@ -24,7 +24,7 @@ public class Pagamento implements Desconto {
         return preco;
     }
 
-    public void pagar() throws Exception {
+    public void pagar() {
         for (Exame e : exames){
             System.out.println("Pagando exame de Id: "+ e.getId());
             e.setPago(true);

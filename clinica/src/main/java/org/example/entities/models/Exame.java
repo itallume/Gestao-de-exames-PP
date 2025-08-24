@@ -8,10 +8,11 @@ import org.example.entities.abstracts.ExameTipo;
 import org.example.entities.interfaces.ExameVisitor;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class Exame {
     private int id;
     private Paciente paciente;
@@ -19,12 +20,28 @@ public class Exame {
     private Medico medicoResponsavel;
     private ExameTipo exameTipo;
     private boolean isPago;
-    private Date data;
     private Date dataRealizacao;
     private Prioridade prioridade;
 
+    public Exame(int id, Paciente paciente, Medico medicoSolicitante, Medico medicoResponsavel, ExameTipo exameTipo, Prioridade prioridade) {
+        this.id = id;
+        this.paciente = paciente;
+        this.medicoSolicitante = medicoSolicitante;
+        this.medicoResponsavel = medicoResponsavel;
+        this.exameTipo = exameTipo;
+        this.prioridade = prioridade;
+    }
+
     public Double calcularPreco(ExameVisitor<Double> visitor){
         return exameTipo.aceitar(visitor);
+    }
+
+    public void realizarExame(){
+        exameTipo.realizarExame();
+    }
+
+    public void preencherDados(Map<String, String> dados, List<byte[]> images){
+
     }
 
 }

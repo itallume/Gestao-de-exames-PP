@@ -1,9 +1,14 @@
 package org.example.entities;
 
 import org.example.entities.abstracts.DescontoBase;
+import org.example.entities.interfaces.Desconto;
 import org.example.entities.interfaces.ExameVisitor;
 
 public class DescontoNovembroAzul extends DescontoBase {
+
+    public DescontoNovembroAzul(Desconto wrappee) {
+        super(wrappee);
+    }
 
     @Override
     public Double calcularPreco(ExameVisitor<Double> visitor) {

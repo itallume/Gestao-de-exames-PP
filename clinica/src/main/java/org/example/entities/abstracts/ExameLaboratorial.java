@@ -1,5 +1,10 @@
 package org.example.entities.abstracts;
 
-public abstract class ExameLaboratorial extends ExameTipo{
 
+import java.util.Map;
+
+public abstract class ExameLaboratorial  extends ExameTipo{
+
+    @Override
+    public abstract Object gerarLaudo();
 }
