@@ -13,7 +13,7 @@ public class LaudoHTML implements ILaudo {
     @Override
     public Object gerarDocumento(ExameProcedimento exameTipo) {
         Paciente paciente = exameTipo.getPaciente();
-        Object dados = exameTipo.getDados();
+        Map<String, String> dados = exameTipo.getDados();
         LocalDate dataHoje = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
@@ -40,7 +40,9 @@ public class LaudoHTML implements ILaudo {
         html.append("<h1>Laboratório ST Diagnósticos</h1>");
         html.append("<p>Paciente: ").append(paciente.getNome()).append("</p>");
         html.append("<p>Convênio: ").append(paciente.getConvenio()).append("</p>");
-        html.append("<p>Médico Solicitante: ").append(exameTipo.getDados() instanceof Map ? ((Map<?, ?>)exameTipo.getDados()).get("medicoSolicitante") : "—").append("</p>");
+        html.append("<p>Médico Solicitante: ").append(
+                exameTipo.getDados() instanceof Map ? ((Map<?, ?>) exameTipo.getDados()).get("medicoSolicitante") : "—")
+                .append("</p>");
         html.append("<p>Data: ").append(dataHoje.format(formatter)).append("</p>");
         html.append("<p>ID do exame: ").append(exameTipo.getId()).append("</p>");
         html.append("</header>");
@@ -49,51 +51,11 @@ public class LaudoHTML implements ILaudo {
         html.append("<section>");
         html.append("<h2>Resultado do Exame</h2>");
 
-        if (dados instanceof Map) {
-            Map<String, Object> mapDados = (Map<String, Object>) dados;
-            String tipo = (String) mapDados.getOrDefault("tipoExame", "Não especificado");
+        String tipo = (String) dados.getOrDefault("tipoExame", "Não especificado");
 
-            html.append("<p>Tipo de exame: ").append(tipo).append("</p>");
+        html.append("<p>Tipo de exame: ").append(tipo).append("</p>");
+        html = exameTipo.montarHtml(html, dados);
 
-            switch (tipo.toLowerCase()) {
-                case "sanguineo":
-                    html.append("<table>");
-                    html.append("<tr><th>Exame</th><th>Resultado</th><th>Valores de Referência</th></tr>");
-
-                    Map<String, String> resultados = (Map<String, String>) mapDados.get("resultados");
-                    if (resultados != null) {
-                        resultados.forEach((nomeExame, valor) -> {
-                            html.append("<tr>");
-                            html.append("<td>").append(nomeExame).append("</td>");
-                            html.append("<td>").append(valor).append("</td>");
-                            html.append("<td>").append(mapDados.getOrDefault("valoresReferencia", "—")).append("</td>");
-                            html.append("</tr>");
-                        });
-                    }
-
-                    html.append("</table>");
-                    html.append("<p>Responsável técnico: ").append(mapDados.getOrDefault("responsavelTecnico", "—")).append("</p>");
-                    break;
-
-                case "raiox":
-                    html.append("<p>Laudo radiológico: ").append(mapDados.getOrDefault("descricao", "—")).append("</p>");
-                    html.append("<p>Radiologista responsável: ").append(mapDados.getOrDefault("radiologista", "—")).append("</p>");
-                    break;
-
-                case "ressonancia":
-                    html.append("<p>Laudo de Ressonância: ").append(mapDados.getOrDefault("descricao", "—")).append("</p>");
-                    html.append("<p>Protocolo: ").append(mapDados.getOrDefault("protocolo", "—")).append("</p>");
-                    html.append("<p>Contraste utilizado: ").append(mapDados.getOrDefault("contraste", "Não")).append("</p>");
-                    html.append("<p>Radiologista responsável: ").append(mapDados.getOrDefault("radiologista", "—")).append("</p>");
-                    break;
-
-                default:
-                    html.append("<p>Dados do exame não especificados.</p>");
-            }
-
-        } else {
-            html.append("<p>Dados do exame indisponíveis.</p>");
-        }
 
         html.append("</section>");
 
@@ -117,4 +79,3 @@ public class LaudoHTML implements ILaudo {
         return html.toString();
     }
 }
-

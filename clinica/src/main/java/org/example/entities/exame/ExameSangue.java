@@ -36,7 +36,7 @@ public class ExameSangue extends ExameLaboratorial {
     }
 
     @Override
-    public Document montarCorpoDocumento(Document doc, Map<String, String> dados) {
+    public Document montarPDF(Document doc, Map<String, String> dados) {
         Table tabela = new Table(UnitValue.createPercentArray(new float[] { 4, 3, 6 }));
         tabela.setWidth(UnitValue.createPercentValue(100));
         tabela.addHeaderCell("Exame");
@@ -54,6 +54,39 @@ public class ExameSangue extends ExameLaboratorial {
                 dados.getOrDefault("responsavelTecnico", "—")));
 
         return doc;
+    }
+
+    @Override
+    public StringBuilder montarHtml(StringBuilder html, Map<String, String> dados) {
+        html.append("<table>");
+        html.append("<tr><th>Exame</th><th>Resultado</th><th>Valores de Referência</th></tr>");
+
+        String resultados = (String) dados.get("resultados");
+        if (resultados != null) {
+            html.append("<tr>");
+            html.append("<td>Resultado</td>");
+            html.append("<td>").append(resultados).append("</td>");
+            html.append("<td>").append(dados.getOrDefault("valoresReferencia", "—")).append("</td>");
+            html.append("</tr>");
+        }
+
+        html.append("</table>");
+        html.append("<p>Responsável técnico: ").append(dados.getOrDefault("responsavelTecnico", "—"))
+                .append("</p>");
+        return html;
+    }
+
+    @Override
+    public StringBuilder montarTxt(StringBuilder sb, Map<String, String> dados) {
+        String resultados = (String) dados.get("resultados");
+        if (resultados != null) {
+            sb.append("Resultado: ").append(resultados).append("\n");
+            sb.append("Valores de Referência: ")
+                    .append(dados.getOrDefault("valoresReferencia", "—")).append("\n");
+        }
+        sb.append("Responsável técnico: ")
+                .append(dados.getOrDefault("responsavelTecnico", "—")).append("\n");
+        return sb;
     }
 
 }

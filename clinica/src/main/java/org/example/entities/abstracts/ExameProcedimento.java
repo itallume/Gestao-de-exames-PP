@@ -44,5 +44,7 @@ public abstract class ExameProcedimento{
     public abstract Object gerarLaudo();
     public abstract <T> T aceitar(ExameVisitor<T> visitor);
     public abstract void realizarExame();
-    public abstract Document montarCorpoDocumento(Document doc, Map<String, String> dados);
+    public abstract Document montarPDF(Document doc, Map<String, String> dados);
+    public abstract StringBuilder montarHtml(StringBuilder html, Map<String, String> dados);
+    public abstract StringBuilder montarTxt(StringBuilder sb, Map<String, String> dados);
 }

@@ -50,7 +50,8 @@ public class LaudoPdf implements ILaudo {
 
             String tipo = (String) dados.getOrDefault("tipoExame", "Não especificado");
             doc.add(new Paragraph("Tipo de Exame: " + tipo));
-            exameTipo.montarCorpoDocumento(doc, dados);
+            doc = exameTipo.montarPDF(doc, dados);
+
             // Rodapé
             doc.add(new Paragraph("\n"));
             Paragraph rodape = new Paragraph();
