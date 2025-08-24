@@ -102,7 +102,7 @@ public class LaudoHTML implements ILaudo {
         html.append("<p>Médico responsável: ");
 
         if (exameTipo.getLaudo() != null && exameTipo.getDados() instanceof Map) {
-            Map<String, Object> dadosMap = (Map<String, Object>) exameTipo.getDados();
+            Map<String, String> dadosMap = (Map<String, String>) exameTipo.getDados();
             html.append("Dr(a). ").append(dadosMap.getOrDefault("medicoResponsavel", "—"));
         } else {
             html.append("—");

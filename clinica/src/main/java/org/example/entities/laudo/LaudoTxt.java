@@ -76,7 +76,7 @@ public class LaudoTxt implements ILaudo{
         sb.append("\n=== Médico Responsável ===\n");
 
         if (exameTipo.getLaudo() != null && exameTipo.getDados() instanceof Map) {
-            Map<String, Object> map = (Map<String, Object>) exameTipo.getDados();
+            Map<String, String> map = (Map<String, String>) exameTipo.getDados();
             sb.append("Dr(a). ").append(map.getOrDefault("medicoResponsavel", "—")).append("\n");
         } else {
             sb.append("—\n");

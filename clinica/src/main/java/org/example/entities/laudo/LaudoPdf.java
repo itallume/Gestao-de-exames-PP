@@ -105,7 +105,7 @@ public class LaudoPdf implements ILaudo{
             doc.add(new Paragraph("\n"));
             Paragraph rodape = new Paragraph();
             if (exameTipo.getLaudo() != null && exameTipo.getDados() instanceof Map) {
-                Map<String, Object> mapDados = (Map<String, Object>) exameTipo.getDados();
+                Map<String, String> mapDados = (Map<String, String>) exameTipo.getDados();
                 rodape.add("Médico responsável: Dr(a). ")
                         .add((String) mapDados.getOrDefault("medicoResponsavel", "—"));
             } else {

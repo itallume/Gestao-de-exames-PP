@@ -2,6 +2,8 @@ package org.example.entities;
 
 import org.example.Enum.Prioridade;
 import org.example.entities.abstracts.ExameTipo;
+import org.example.entities.desconto.DescontoFachada;
+import org.example.entities.filaPrioridade.FilaPrioridadeExame;
 import org.example.entities.interfaces.Desconto;
 import org.example.entities.interfaces.ExameVisitor;
 import org.example.entities.models.Exame;
