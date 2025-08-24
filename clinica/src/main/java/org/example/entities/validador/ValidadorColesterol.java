@@ -1,7 +1,8 @@
-package org.example.entities;
+package org.example.entities.validador;
 
 import org.example.entities.abstracts.ExameTipo;
 import org.example.entities.abstracts.ValidadorLaboratorial;
+import org.example.entities.exame.ExameSangue;
 
 import java.util.Map;
 

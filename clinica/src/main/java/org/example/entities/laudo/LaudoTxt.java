@@ -1,4 +1,4 @@
-package org.example.entities;
+package org.example.entities.laudo;
 
 import org.example.entities.abstracts.ExameTipo;
 import org.example.entities.interfaces.ILaudo;

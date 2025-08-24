@@ -1,9 +1,10 @@
-package org.example.entities;
+package org.example.entities.validador;
 
 import org.example.entities.abstracts.ExameImagem;
 import org.example.entities.abstracts.ExameTipo;
 import org.example.entities.abstracts.ValidadorImagem;
 import org.example.entities.abstracts.ValidadorLaboratorial;
+import org.example.entities.exame.ExameColonoscopia;
 
 import java.util.Map;
 

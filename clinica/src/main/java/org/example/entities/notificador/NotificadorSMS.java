@@ -1,4 +1,4 @@
-package org.example.entities;
+package org.example.entities.notificador;
 
 import org.example.entities.interfaces.ILaudo;
 import org.example.entities.interfaces.INotificador;

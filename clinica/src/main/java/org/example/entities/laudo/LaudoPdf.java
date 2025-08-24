@@ -1,4 +1,4 @@
-package org.example.entities;
+package org.example.entities.laudo;
 
 import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.font.PdfFontFactory;
