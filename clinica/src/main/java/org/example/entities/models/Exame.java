@@ -23,7 +23,8 @@ public class Exame {
     private Date dataRealizacao;
     private Prioridade prioridade;
 
-    public Exame(int id, Paciente paciente, Medico medicoSolicitante, Medico medicoResponsavel, ExameTipo exameTipo, Prioridade prioridade) {
+    public Exame(int id, Paciente paciente, Medico medicoSolicitante, Medico medicoResponsavel, ExameTipo exameTipo,
+            Prioridade prioridade) {
         this.id = id;
         this.paciente = paciente;
         this.medicoSolicitante = medicoSolicitante;
@@ -32,19 +33,16 @@ public class Exame {
         this.prioridade = prioridade;
     }
 
-    public Double calcularPreco(ExameVisitor<Double> visitor){
+    public Double calcularPreco(ExameVisitor<Double> visitor) {
         return exameTipo.aceitar(visitor);
     }
 
-    public void realizarExame(){
+    public void realizarExame() {
         exameTipo.realizarExame();
     }
 
-    public void preencherDados(Map<String, String> dados){
+    public void preencherDados(Map<String, String> dados) {
         exameTipo.preencherDados(dados);
     }
 
 }
-
-
-
