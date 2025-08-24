@@ -40,8 +40,8 @@ public class Exame {
         exameTipo.realizarExame();
     }
 
-    public void preencherDados(Map<String, String> dados, List<byte[]> images){
-
+    public void preencherDados(Map<String, String> dados){
+        exameTipo.preencherDados(dados);
     }
 
 }

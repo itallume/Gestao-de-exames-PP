@@ -6,8 +6,6 @@ import java.util.Map;
 
 public abstract class ExameEndoscopico extends ExameTipo{
 
-    protected List<byte[]> images;
-
     @Override
     public abstract Object gerarLaudo();
 }

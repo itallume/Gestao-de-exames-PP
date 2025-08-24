@@ -1,14 +1,13 @@
 package org.example.entities;
 
-import org.example.entities.abstracts.ExameEndoscopico;
+import org.example.entities.abstracts.ExameLaboratorial;
 import org.example.entities.interfaces.ExameVisitor;
 
 import java.util.Map;
 
-public class ExameColonoscopia extends ExameEndoscopico{
-
+public class ExameRessonanciaMagnetica extends ExameLaboratorial {
     @Override
-    public void preencherDados(Map dados) {
+    public void preencherDados(Map<String, String> dados) {
 
     }
 
@@ -24,6 +23,6 @@ public class ExameColonoscopia extends ExameEndoscopico{
 
     @Override
     public void realizarExame() {
-        System.out.println("Realizando exame de Colonoscopia do paciente: "+ getPaciente().getNome());
+        System.out.println("Realizando exame de Ressonancia Magnetica do paciente: "+ getPaciente().getNome());
     }
 }

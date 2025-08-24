@@ -28,6 +28,7 @@ public class FilaPrioridadeExame {
 
         Exame proximoExame = fila.getFirst();
         fila.removeFirst();
+        System.out.println(this);
         return proximoExame;
     }
 
@@ -46,7 +47,7 @@ public class FilaPrioridadeExame {
                 default -> prioridadeSimbolo = e.getPrioridade().toString();
             }
             sb.append(pos).append(". Exame de id: ").append(e.getId())
-                    .append(" [").append(prioridadeSimbolo).append("]\n");
+                    .append(" Paciente: ").append(e.getPaciente().getNome()).append(" [").append(prioridadeSimbolo).append("]\n");
             pos++;
         }
 

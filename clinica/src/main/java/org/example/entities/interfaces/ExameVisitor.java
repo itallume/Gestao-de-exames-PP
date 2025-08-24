@@ -1,11 +1,11 @@
 package org.example.entities.interfaces;
 
-import org.example.entities.ExameColonoscopia;
-import org.example.entities.ExameRaioX;
-import org.example.entities.ExameSangue;
+import org.example.entities.*;
 
 public interface ExameVisitor<T> {
     T visitarExame(ExameSangue exameSangue);
     T visitarExame(ExameRaioX exameRaioX);
-    T VisitarExame(ExameColonoscopia exameColonoscopia);
+    T visitarExame(ExameColonoscopia exameColonoscopia);
+    T visitarExame(ExameRessonanciaMagnetica exameRessonanciaMagnetica);
+    T visitarExame(ExameEndoscopiaDigestivaAlta exameEndoscopiaDigestivaAlta);
 }

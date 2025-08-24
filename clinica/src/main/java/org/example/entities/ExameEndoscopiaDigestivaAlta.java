@@ -5,10 +5,9 @@ import org.example.entities.interfaces.ExameVisitor;
 
 import java.util.Map;
 
-public class ExameColonoscopia extends ExameEndoscopico{
-
+public class ExameEndoscopiaDigestivaAlta extends ExameEndoscopico {
     @Override
-    public void preencherDados(Map dados) {
+    public void preencherDados(Map<String, String> dados) {
 
     }
 
@@ -24,6 +23,6 @@ public class ExameColonoscopia extends ExameEndoscopico{
 
     @Override
     public void realizarExame() {
-        System.out.println("Realizando exame de Colonoscopia do paciente: "+ getPaciente().getNome());
+        System.out.println("Realizando exame de Endoscopia Digestiva Alta do paciente: "+ getPaciente().getNome());
     }
 }

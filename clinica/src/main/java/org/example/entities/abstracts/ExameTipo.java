@@ -34,7 +34,7 @@ public abstract class ExameTipo{
 
     public void notificarTodos() throws MessagingException {
         for (INotificador n : notificadores) {
-            n.notificar(paciente, laudo); // pode lançar MessagingException
+            n.notificar(paciente, laudo);
         }
     }
 

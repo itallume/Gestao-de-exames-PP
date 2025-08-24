@@ -14,7 +14,17 @@ public class PrecoVisitor implements ExameVisitor<Double> {
     }
 
     @Override
-    public Double VisitarExame(ExameColonoscopia exameColonoscopia) {
+    public Double visitarExame(ExameColonoscopia exameColonoscopia) {
         return 400.0;
+    }
+
+    @Override
+    public Double visitarExame(ExameRessonanciaMagnetica exameRessonanciaMagnetica) {
+        return 320.0;
+    }
+
+    @Override
+    public Double visitarExame(ExameEndoscopiaDigestivaAlta exameEndoscopiaDigestivaAlta) {
+        return 450.0;
     }
 }

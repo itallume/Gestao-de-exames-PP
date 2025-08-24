@@ -1,7 +1,6 @@
 package org.example.entities.abstracts;
 
 import org.example.entities.interfaces.IValidador;
-import java.util.List;
 
 public abstract class ValidadorEndoscopico implements IValidador {
     protected IValidador proximo;
@@ -13,5 +12,5 @@ public abstract class ValidadorEndoscopico implements IValidador {
     }
 
     @Override
-    public abstract boolean validar(List<String> dados, ExameTipo exameEndoscopico);
+    public abstract void validar(ExameTipo exameEndoscopico);
 }

@@ -29,6 +29,6 @@ public class ExameSangue extends ExameLaboratorial {
 
     @Override
     public void realizarExame() {
-        System.out.println("Realizando exame de sangue do paciente: "+ getPaciente().getNome());
+        System.out.println("Realizando exame de sangue do paciente: "+ super.getPaciente().getNome());
     }
 }

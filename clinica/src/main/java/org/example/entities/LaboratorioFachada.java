@@ -10,6 +10,7 @@ import org.example.entities.models.Paciente;
 import org.example.entities.models.Pagamento;
 
 import java.util.List;
+import java.util.Map;
 
 public class LaboratorioFachada {
     private FilaPrioridadeExame fila;
@@ -40,12 +41,15 @@ public class LaboratorioFachada {
         return fila.chamarProximo();
     }
 
-    public void executarExame(Exame exame){
+    public void realizarExame(Exame exame) throws Exception {
+        if (!exame.isPago()){
+            throw new Exception("Não é possével realizar o exame de id "+ exame.getId() +", pois não está pago.");
+        }
         exame.realizarExame();
     }
 
-    public void preencherDadosExame(Exame exame){
-
+    public void preencherDadosExame(Exame exame, Map<String, String> dados){
+        exame.preencherDados(dados);
     }
 
 

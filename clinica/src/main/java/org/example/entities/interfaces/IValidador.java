@@ -1,10 +1,9 @@
 package org.example.entities.interfaces;
 
 import org.example.entities.abstracts.ExameTipo;
-import java.util.List;
 
 public interface IValidador {
-    public boolean validar(List<String> dados, ExameTipo exame);
+    public void validar(ExameTipo exame) throws Exception;
 
     public IValidador setProximo(IValidador validador);
 }
