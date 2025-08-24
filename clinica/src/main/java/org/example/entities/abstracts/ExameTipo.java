@@ -1,5 +1,6 @@
 package org.example.entities.abstracts;
 
+import java.util.Date;
 import java.util.List;
 
 import lombok.Data;
@@ -17,10 +18,12 @@ public abstract class ExameTipo {
     private Paciente paciente;
     private Object dados;
     private double precoBase;
+    private Date dataRealizacao;
 
     public abstract void adicionarSubsribe(INotificador notificador);
     public abstract void removerSubsribe(INotificador notificador);
     public abstract void notificarTodos();
     public abstract Object gerarLaudo(Object dados);
     public abstract <T> T aceitar(ExameVisitor<T> visitor);
+    public abstract void realizarExame();
 }

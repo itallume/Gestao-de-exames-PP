@@ -1,11 +1,8 @@
-package org.example.entities;
+package org.example.entities.models;
 
 import org.example.entities.interfaces.Desconto;
 import org.example.entities.interfaces.ExameVisitor;
-import org.example.entities.models.Exame;
-import org.example.entities.models.Paciente;
 
-import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 

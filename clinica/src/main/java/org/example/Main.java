@@ -1,5 +1,7 @@
 package org.example;
 
+import org.example.entities.ExameSangue;
+import org.example.entities.LaudoHTML;
 import org.example.entities.LaudoTxt;
 import org.example.entities.NotificardorEmail;
 import org.example.entities.interfaces.ILaudo;

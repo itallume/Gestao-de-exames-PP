@@ -1,10 +1,120 @@
 package org.example.entities;
 
+import org.example.entities.abstracts.ExameTipo;
 import org.example.entities.interfaces.ILaudo;
+import org.example.entities.models.Paciente;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Map;
 
 public class LaudoHTML implements ILaudo {
+
     @Override
-    public Object gerarDocumento(Object dadosLaudo) {
-        return null;
+    public Object gerarDocumento(ExameTipo exameTipo) {
+        Paciente paciente = exameTipo.getPaciente();
+        Object dados = exameTipo.getDados();
+        LocalDate dataHoje = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        StringBuilder html = new StringBuilder();
+
+        html.append("<!DOCTYPE html>");
+        html.append("<html lang='pt-BR'>");
+        html.append("<head>");
+        html.append("<meta charset='UTF-8'>");
+        html.append("<title>Laudo do Exame</title>");
+        html.append("<style>");
+        html.append("body { font-family: Arial, sans-serif; margin: 20px; }");
+        html.append("header, footer { text-align: center; margin-bottom: 20px; }");
+        html.append("h1 { color: #1a73e8; }");
+        html.append("table { width: 100%; border-collapse: collapse; margin-top: 10px; }");
+        html.append("th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }");
+        html.append("th { background-color: #f2f2f2; }");
+        html.append("</style>");
+        html.append("</head>");
+        html.append("<body>");
+
+        // Cabeçalho
+        html.append("<header>");
+        html.append("<h1>Laboratório ST Diagnósticos</h1>");
+        html.append("<p>Paciente: ").append(paciente.getNome()).append("</p>");
+        html.append("<p>Convênio: ").append(paciente.getConvenio()).append("</p>");
+        html.append("<p>Médico Solicitante: ").append(exameTipo.getDados() instanceof Map ? ((Map<?, ?>)exameTipo.getDados()).get("medicoSolicitante") : "—").append("</p>");
+        html.append("<p>Data: ").append(dataHoje.format(formatter)).append("</p>");
+        html.append("<p>ID do exame: ").append(exameTipo.getId()).append("</p>");
+        html.append("</header>");
+
+        // Corpo do exame
+        html.append("<section>");
+        html.append("<h2>Resultado do Exame</h2>");
+
+        if (dados instanceof Map) {
+            Map<String, Object> mapDados = (Map<String, Object>) dados;
+            String tipo = (String) mapDados.getOrDefault("tipoExame", "Não especificado");
+
+            html.append("<p>Tipo de exame: ").append(tipo).append("</p>");
+
+            switch (tipo.toLowerCase()) {
+                case "sanguineo":
+                    html.append("<table>");
+                    html.append("<tr><th>Exame</th><th>Resultado</th><th>Valores de Referência</th></tr>");
+
+                    Map<String, String> resultados = (Map<String, String>) mapDados.get("resultados");
+                    if (resultados != null) {
+                        resultados.forEach((nomeExame, valor) -> {
+                            html.append("<tr>");
+                            html.append("<td>").append(nomeExame).append("</td>");
+                            html.append("<td>").append(valor).append("</td>");
+                            html.append("<td>").append(mapDados.getOrDefault("valoresReferencia", "—")).append("</td>");
+                            html.append("</tr>");
+                        });
+                    }
+
+                    html.append("</table>");
+                    html.append("<p>Responsável técnico: ").append(mapDados.getOrDefault("responsavelTecnico", "—")).append("</p>");
+                    break;
+
+                case "raiox":
+                    html.append("<p>Laudo radiológico: ").append(mapDados.getOrDefault("descricao", "—")).append("</p>");
+                    html.append("<p>Radiologista responsável: ").append(mapDados.getOrDefault("radiologista", "—")).append("</p>");
+                    break;
+
+                case "ressonancia":
+                    html.append("<p>Laudo de Ressonância: ").append(mapDados.getOrDefault("descricao", "—")).append("</p>");
+                    html.append("<p>Protocolo: ").append(mapDados.getOrDefault("protocolo", "—")).append("</p>");
+                    html.append("<p>Contraste utilizado: ").append(mapDados.getOrDefault("contraste", "Não")).append("</p>");
+                    html.append("<p>Radiologista responsável: ").append(mapDados.getOrDefault("radiologista", "—")).append("</p>");
+                    break;
+
+                default:
+                    html.append("<p>Dados do exame não especificados.</p>");
+            }
+
+        } else {
+            html.append("<p>Dados do exame indisponíveis.</p>");
+        }
+
+        html.append("</section>");
+
+        // Rodapé
+        html.append("<footer>");
+        html.append("<p>Médico responsável: ");
+
+        if (exameTipo.getLaudo() != null && exameTipo.getDados() instanceof Map) {
+            Map<String, Object> dadosMap = (Map<String, Object>) exameTipo.getDados();
+            html.append("Dr(a). ").append(dadosMap.getOrDefault("medicoResponsavel", "—"));
+        } else {
+            html.append("—");
+        }
+
+        html.append("</p>");
+        html.append("</footer>");
+
+        html.append("</body>");
+        html.append("</html>");
+
+        return html.toString();
     }
 }
+
