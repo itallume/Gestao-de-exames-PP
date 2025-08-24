@@ -1,5 +1,6 @@
 package org.example.entities;
 
+import org.example.Enum.Campanha;
 import org.example.Enum.Prioridade;
 import org.example.entities.abstracts.ExameTipo;
 import org.example.entities.desconto.DescontoFachada;
@@ -24,14 +25,13 @@ public class LaboratorioFachada {
         return new Exame(geradorId.gerarId(), paciente, medicoSolicitante, medicoSResponsavel, exameTipo, prioridade);
     }
 
-    public double calcularPreco(List<Exame> exames, Paciente paciente){
-        Desconto pagamento = DescontoFachada.verificarDescontosPossiveis(exames, paciente);
+    public double calcularPreco(List<Exame> exames, Paciente paciente, List<Campanha> campanhasAtivas){
+        Desconto pagamento = DescontoFachada.verificarDescontosPossiveis(exames, paciente, campanhasAtivas);
         return pagamento.calcularPreco(precoVisitor);
     }
 
-    public void pagarExames(List<Exame> exames, Paciente paciente){
-        //TODO dar uma olhada aqui
-        Desconto pagamento = DescontoFachada.verificarDescontosPossiveis(exames, paciente);
+    public void pagarExames(List<Exame> exames, Paciente paciente, List<Campanha> campanhasAtivas){
+        Desconto pagamento = DescontoFachada.verificarDescontosPossiveis(exames, paciente, campanhasAtivas);
         pagamento.pagar();
     }
 
