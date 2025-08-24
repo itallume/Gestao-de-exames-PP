@@ -4,7 +4,7 @@ public class GeradorId {
     private static GeradorId instance = null;
     private int contador = 0;
 
-    private GeradorId() {
+    GeradorId() {
     }
 
     public GeradorId getInstance() {

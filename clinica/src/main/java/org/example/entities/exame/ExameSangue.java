@@ -18,6 +18,7 @@ public class ExameSangue extends ExameLaboratorial {
     @Override
     public void preencherDados(Map<String, String> dados) {
 
+        this.setDados(dados);
     }
 
     @Override

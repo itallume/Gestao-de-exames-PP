@@ -12,6 +12,7 @@ public class ExameColonoscopia extends ExameEndoscopico {
     @Override
     public void preencherDados(Map dados) {
 
+        this.setDados(dados);
     }
 
     @Override

@@ -11,6 +11,7 @@ public class ExameEndoscopiaDigestivaAlta extends ExameEndoscopico {
     @Override
     public void preencherDados(Map<String, String> dados) {
 
+        this.setDados(dados);
     }
 
     @Override

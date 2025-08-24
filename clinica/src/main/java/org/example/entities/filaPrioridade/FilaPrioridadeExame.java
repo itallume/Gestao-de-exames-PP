@@ -9,6 +9,10 @@ public class FilaPrioridadeExame {
 
     private LinkedList<ExameOrdem> fila;
 
+    public FilaPrioridadeExame() {
+        this.fila = new LinkedList<>();
+    }
+
     public void adicionarExame(ExameOrdem exame) {
         InserirExameStrategy strategy;
         switch (exame.getPrioridade()) {
