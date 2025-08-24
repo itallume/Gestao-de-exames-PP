@@ -1,9 +1,9 @@
 package org.example.entities.interfaces;
 
-import org.example.entities.abstracts.ExameTipo;
+import org.example.entities.abstracts.ExameProcedimento;
 
 public interface IValidador {
-    public void validar(ExameTipo exame) throws Exception;
+    public void validar(ExameProcedimento exame) throws Exception;
 
     public IValidador setProximo(IValidador validador);
 }

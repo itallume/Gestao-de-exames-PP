@@ -6,11 +6,12 @@ import org.example.entities.interfaces.ExameVisitor;
 import org.example.entities.interfaces.INotificador;
 
 import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Paragraph;
 
 import java.util.Map;
 
 @Data
-public class ExameRaioX extends ExameImagem{
+public class ExameRaioX extends ExameImagem {
 
     @Override
     public void preencherDados(Map<String, String> dados) {
@@ -29,14 +30,16 @@ public class ExameRaioX extends ExameImagem{
 
     @Override
     public void realizarExame() {
-        System.out.println("Realizando exame de RaioX do paciente: "+ getPaciente().getNome());
+        System.out.println("Realizando exame de RaioX do paciente: " + getPaciente().getNome());
     }
 
     @Override
-    public void montarCorpoDocumento(Document doc, Map<String, String> dados) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'montarCorpoDocumento'");
+    public Document montarCorpoDocumento(Document doc, Map<String, String> dados) {
+        doc.add(new Paragraph("Laudo radiológico: " +
+                dados.getOrDefault("descricao", "—")));
+        doc.add(new Paragraph("Radiologista responsável: " +
+                dados.getOrDefault("radiologista", "—")));
+        return doc;
     }
-
 
 }

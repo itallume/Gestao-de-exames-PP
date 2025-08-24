@@ -5,6 +5,8 @@ import org.example.entities.interfaces.ExameVisitor;
 
 import com.itextpdf.layout.Document;
 
+import com.itextpdf.layout.element.*;
+
 import java.util.Map;
 
 public class ExameRessonanciaMagnetica extends ExameLaboratorial {
@@ -25,14 +27,20 @@ public class ExameRessonanciaMagnetica extends ExameLaboratorial {
 
     @Override
     public void realizarExame() {
-        System.out.println("Realizando exame de Ressonancia Magnetica do paciente: "+ getPaciente().getNome());
+        System.out.println("Realizando exame de Ressonancia Magnetica do paciente: " + getPaciente().getNome());
     }
 
     @Override
-    public void montarCorpoDocumento(Document doc, Map<String, String> dados) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'montarCorpoDocumento'");
+    public Document montarCorpoDocumento(Document doc, Map<String, String> dados) {
+        doc.add(new Paragraph("Laudo de Ressonância: " +
+                dados.getOrDefault("descricao", "—")));
+        doc.add(new Paragraph("Protocolo: " +
+                dados.getOrDefault("protocolo", "—")));
+        doc.add(new Paragraph("Contraste utilizado: " +
+                dados.getOrDefault("contraste", "Não")));
+        doc.add(new Paragraph("Radiologista responsável: " +
+                dados.getOrDefault("radiologista", "—")));
+        return doc;
     }
-
 
 }

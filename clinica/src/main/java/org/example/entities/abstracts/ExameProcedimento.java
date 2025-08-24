@@ -17,7 +17,7 @@ import com.itextpdf.layout.Document;
 import javax.mail.MessagingException;
 
 @Data
-public abstract class ExameTipo{
+public abstract class ExameProcedimento{
     private int id;
     private ILaudo laudo;
     private List<INotificador> notificadores;
@@ -44,5 +44,5 @@ public abstract class ExameTipo{
     public abstract Object gerarLaudo();
     public abstract <T> T aceitar(ExameVisitor<T> visitor);
     public abstract void realizarExame();
-    public abstract void montarCorpoDocumento(Document doc, Map<String, String> dados);
+    public abstract Document montarCorpoDocumento(Document doc, Map<String, String> dados);
 }

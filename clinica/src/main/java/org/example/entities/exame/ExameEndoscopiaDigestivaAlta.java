@@ -29,7 +29,7 @@ public class ExameEndoscopiaDigestivaAlta extends ExameEndoscopico {
     }
 
     @Override
-    public void montarCorpoDocumento(Document doc, Map<String, String> dados) {
+    public Document montarCorpoDocumento(Document doc, Map<String, String> dados) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'montarCorpoDocumento'");
     }

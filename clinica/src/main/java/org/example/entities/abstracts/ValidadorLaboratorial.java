@@ -12,5 +12,5 @@ public abstract class ValidadorLaboratorial implements IValidador {
     }
 
     @Override
-    public abstract void validar(ExameTipo exameLaboratorial) throws Exception;
+    public abstract void validar(ExameProcedimento exameLaboratorial) throws Exception;
 }

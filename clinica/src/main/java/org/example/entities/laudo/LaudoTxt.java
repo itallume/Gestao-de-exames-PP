@@ -1,6 +1,6 @@
 package org.example.entities.laudo;
 
-import org.example.entities.abstracts.ExameTipo;
+import org.example.entities.abstracts.ExameProcedimento;
 import org.example.entities.interfaces.ILaudo;
 import org.example.entities.models.Paciente;
 
@@ -13,7 +13,7 @@ public class LaudoTxt implements ILaudo{
 
 
     @Override
-    public Object gerarDocumento(ExameTipo exameTipo) {
+    public Object gerarDocumento(ExameProcedimento exameTipo) {
         StringBuilder sb = new StringBuilder();
         Paciente paciente = exameTipo.getPaciente();
         Object dados = exameTipo.getDados();

@@ -1,15 +1,15 @@
 package org.example.entities.filaPrioridade;
 
 import org.example.entities.interfaces.InserirExameStrategy;
-import org.example.entities.models.Exame;
+import org.example.entities.models.ExameOrdem;
 
 import java.util.LinkedList;
 
 public class FilaPrioridadeExame {
 
-    private LinkedList<Exame> fila;
+    private LinkedList<ExameOrdem> fila;
 
-    public void adicionarExame(Exame exame) {
+    public void adicionarExame(ExameOrdem exame) {
         InserirExameStrategy strategy;
         switch (exame.getPrioridade()) {
             case URGENTE -> strategy = new InserirUrgente();
@@ -21,12 +21,12 @@ public class FilaPrioridadeExame {
         System.out.println(this);
     }
 
-    public Exame chamarProximo() throws Exception {
+    public ExameOrdem chamarProximo() throws Exception {
         if (fila.isEmpty()){
             throw new Exception("Fila vazia...");
         }
 
-        Exame proximoExame = fila.getFirst();
+        ExameOrdem proximoExame = fila.getFirst();
         fila.removeFirst();
         System.out.println(this);
         return proximoExame;
@@ -38,7 +38,7 @@ public class FilaPrioridadeExame {
         sb.append("Fila de Exames:\n");
 
         int pos = 1;
-        for (Exame e : fila) {
+        for (ExameOrdem e : fila) {
             String prioridadeSimbolo;
             switch (e.getPrioridade()) {
                 case URGENTE -> prioridadeSimbolo = "⚠️ URGENTE";

@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.example.Enum.Prioridade;
-import org.example.entities.abstracts.ExameTipo;
+import org.example.entities.abstracts.ExameProcedimento;
 import org.example.entities.interfaces.ExameVisitor;
 
 import java.util.Date;
@@ -13,17 +13,17 @@ import java.util.Map;
 
 @Data
 @NoArgsConstructor
-public class Exame {
+public class ExameOrdem {
     private int id;
     private Paciente paciente;
     private Medico medicoSolicitante;
     private Medico medicoResponsavel;
-    private ExameTipo exameTipo;
+    private ExameProcedimento exameTipo;
     private boolean isPago;
     private Date dataRealizacao;
     private Prioridade prioridade;
 
-    public Exame(int id, Paciente paciente, Medico medicoSolicitante, Medico medicoResponsavel, ExameTipo exameTipo,
+    public ExameOrdem(int id, Paciente paciente, Medico medicoSolicitante, Medico medicoResponsavel, ExameProcedimento exameTipo,
             Prioridade prioridade) {
         this.id = id;
         this.paciente = paciente;

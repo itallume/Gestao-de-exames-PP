@@ -2,7 +2,7 @@ package org.example.entities.desconto;
 
 import org.example.Enum.Campanha;
 import org.example.entities.interfaces.Desconto;
-import org.example.entities.models.Exame;
+import org.example.entities.models.ExameOrdem;
 import org.example.entities.models.Paciente;
 import org.example.entities.models.Pagamento;
 
@@ -10,7 +10,7 @@ import java.util.List;
 
 public class DescontoFachada {
 
-    public static Desconto verificarDescontosPossiveis(List<Exame> exames, Paciente paciente,
+    public static Desconto verificarDescontosPossiveis(List<ExameOrdem> exames, Paciente paciente,
             List<Campanha> campanhasAtivas) {
         Desconto desconto = new Pagamento(exames, paciente);
         if (paciente.getIdade() > 60) {

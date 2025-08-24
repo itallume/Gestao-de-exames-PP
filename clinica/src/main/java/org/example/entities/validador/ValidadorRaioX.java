@@ -1,6 +1,6 @@
 package org.example.entities.validador;
 
-import org.example.entities.abstracts.ExameTipo;
+import org.example.entities.abstracts.ExameProcedimento;
 import org.example.entities.abstracts.ValidadorLaboratorial;
 import org.example.entities.exame.ExameRaioX;
 
@@ -9,7 +9,7 @@ import java.util.Map;
 public class ValidadorRaioX extends ValidadorLaboratorial {
 
     @Override
-    public void validar(ExameTipo exame) throws Exception {
+    public void validar(ExameProcedimento exame) throws Exception {
         if (exame instanceof ExameRaioX) {
 
             Map<String, String> dados = exame.getDados();

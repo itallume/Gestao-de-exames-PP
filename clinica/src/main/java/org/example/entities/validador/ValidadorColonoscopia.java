@@ -1,7 +1,7 @@
 package org.example.entities.validador;
 
 import org.example.entities.abstracts.ExameImagem;
-import org.example.entities.abstracts.ExameTipo;
+import org.example.entities.abstracts.ExameProcedimento;
 import org.example.entities.abstracts.ValidadorImagem;
 import org.example.entities.abstracts.ValidadorLaboratorial;
 import org.example.entities.exame.ExameColonoscopia;
@@ -11,7 +11,7 @@ import java.util.Map;
 public class ValidadorColonoscopia extends ValidadorLaboratorial {
 
     @Override
-    public void validar(ExameTipo exame) throws Exception {
+    public void validar(ExameProcedimento exame) throws Exception {
 
         if (exame instanceof ExameColonoscopia) {
 

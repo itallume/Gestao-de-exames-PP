@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 @Data
-public abstract class ExameImagem extends ExameTipo {
+public abstract class ExameImagem extends ExameProcedimento {
     @Override
     public abstract Object gerarLaudo();
 }

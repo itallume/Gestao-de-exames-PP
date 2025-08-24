@@ -7,7 +7,7 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.*;
 
 import com.itextpdf.layout.properties.TextAlignment;
-import org.example.entities.abstracts.ExameTipo;
+import org.example.entities.abstracts.ExameProcedimento;
 import org.example.entities.interfaces.ILaudo;
 import org.example.entities.models.Paciente;
 
@@ -18,7 +18,7 @@ import java.util.Map;
 
 public class LaudoPdf implements ILaudo {
     @Override
-    public Object gerarDocumento(ExameTipo exameTipo) {
+    public Object gerarDocumento(ExameProcedimento exameTipo) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
         try {
@@ -51,44 +51,6 @@ public class LaudoPdf implements ILaudo {
             String tipo = (String) dados.getOrDefault("tipoExame", "Não especificado");
             doc.add(new Paragraph("Tipo de Exame: " + tipo));
             exameTipo.montarCorpoDocumento(doc, dados);
-            // switch (tipo.toLowerCase()) {
-            //     case "sanguineo" -> {
-
-            //         // Table tabela = new Table(UnitValue.createPercentArray(new float[] { 4, 3, 6 }));
-            //         // tabela.setWidth(UnitValue.createPercentValue(100));
-            //         // tabela.addHeaderCell("Exame");
-            //         // tabela.addHeaderCell("Resultado");
-            //         // tabela.addHeaderCell("Valores de Referência");
-
-            //         // String resultados = dados.get("resultados");
-            //         // if (resultados != null) {
-            //         //     tabela.addCell("Resultado");
-            //         //     tabela.addCell(resultados);
-            //         //     tabela.addCell((String) dados.getOrDefault("valoresReferencia", "—"));
-            //         // }
-            //         // doc.add(tabela);
-            //         // doc.add(new Paragraph("Responsável técnico: " +
-            //         //         dados.getOrDefault("responsavelTecnico", "—")));
-            //     }
-            //     case "raiox" -> {
-            //         doc.add(new Paragraph("Laudo radiológico: " +
-            //                 dados.getOrDefault("descricao", "—")));
-            //         doc.add(new Paragraph("Radiologista responsável: " +
-            //                 dados.getOrDefault("radiologista", "—")));
-            //     }
-            //     case "ressonancia" -> {
-            //         doc.add(new Paragraph("Laudo de Ressonância: " +
-            //                 dados.getOrDefault("descricao", "—")));
-            //         doc.add(new Paragraph("Protocolo: " +
-            //                 dados.getOrDefault("protocolo", "—")));
-            //         doc.add(new Paragraph("Contraste utilizado: " +
-            //                 dados.getOrDefault("contraste", "Não")));
-            //         doc.add(new Paragraph("Radiologista responsável: " +
-            //                 dados.getOrDefault("radiologista", "—")));
-            //     }
-            //     default -> doc.add(new Paragraph("Dados do exame não especificados."));
-            // }
-
             // Rodapé
             doc.add(new Paragraph("\n"));
             Paragraph rodape = new Paragraph();

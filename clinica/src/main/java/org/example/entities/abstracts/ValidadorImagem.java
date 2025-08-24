@@ -12,5 +12,5 @@ public abstract class ValidadorImagem implements IValidador {
     }
 
     @Override
-    public abstract void validar(ExameTipo exameImagem);
+    public abstract void validar(ExameProcedimento exameImagem);
 }

@@ -1,7 +1,7 @@
 package org.example.entities.interfaces;
 
-import org.example.entities.abstracts.ExameTipo;
+import org.example.entities.abstracts.ExameProcedimento;
 
 public interface ILaudo {
-    Object gerarDocumento(ExameTipo exameTipo);
+    Object gerarDocumento(ExameProcedimento exameTipo);
 }

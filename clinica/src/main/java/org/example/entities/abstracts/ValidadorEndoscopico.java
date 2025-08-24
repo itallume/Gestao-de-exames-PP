@@ -12,5 +12,5 @@ public abstract class ValidadorEndoscopico implements IValidador {
     }
 
     @Override
-    public abstract void validar(ExameTipo exameEndoscopico);
+    public abstract void validar(ExameProcedimento exameEndoscopico);
 }

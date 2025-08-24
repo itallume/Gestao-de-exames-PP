@@ -1,6 +1,6 @@
 package org.example.entities.laudo;
 
-import org.example.entities.abstracts.ExameTipo;
+import org.example.entities.abstracts.ExameProcedimento;
 import org.example.entities.interfaces.ILaudo;
 import org.example.entities.models.Paciente;
 
@@ -11,7 +11,7 @@ import java.util.Map;
 public class LaudoHTML implements ILaudo {
 
     @Override
-    public Object gerarDocumento(ExameTipo exameTipo) {
+    public Object gerarDocumento(ExameProcedimento exameTipo) {
         Paciente paciente = exameTipo.getPaciente();
         Object dados = exameTipo.getDados();
         LocalDate dataHoje = LocalDate.now();
