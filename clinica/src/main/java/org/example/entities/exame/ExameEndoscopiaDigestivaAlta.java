@@ -3,6 +3,8 @@ package org.example.entities.exame;
 import org.example.entities.abstracts.ExameEndoscopico;
 import org.example.entities.interfaces.ExameVisitor;
 
+import com.itextpdf.layout.Document;
+
 import java.util.Map;
 
 public class ExameEndoscopiaDigestivaAlta extends ExameEndoscopico {
@@ -25,4 +27,12 @@ public class ExameEndoscopiaDigestivaAlta extends ExameEndoscopico {
     public void realizarExame() {
         System.out.println("Realizando exame de Endoscopia Digestiva Alta do paciente: "+ getPaciente().getNome());
     }
+
+    @Override
+    public void montarCorpoDocumento(Document doc, Map<String, String> dados) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'montarCorpoDocumento'");
+    }
+
+
 }

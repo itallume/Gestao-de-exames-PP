@@ -5,6 +5,8 @@ import org.example.entities.abstracts.ExameImagem;
 import org.example.entities.interfaces.ExameVisitor;
 import org.example.entities.interfaces.INotificador;
 
+import com.itextpdf.layout.Document;
+
 import java.util.Map;
 
 @Data
@@ -29,4 +31,12 @@ public class ExameRaioX extends ExameImagem{
     public void realizarExame() {
         System.out.println("Realizando exame de RaioX do paciente: "+ getPaciente().getNome());
     }
+
+    @Override
+    public void montarCorpoDocumento(Document doc, Map<String, String> dados) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'montarCorpoDocumento'");
+    }
+
+
 }

@@ -10,7 +10,6 @@ import org.example.entities.interfaces.ExameVisitor;
 import org.example.entities.models.Exame;
 import org.example.entities.models.Medico;
 import org.example.entities.models.Paciente;
-import org.example.entities.models.Pagamento;
 
 import java.util.List;
 import java.util.Map;
@@ -50,7 +49,7 @@ public class LaboratorioFachada {
         exame.realizarExame();
     }
 
-    public void preencherDadosExame(Exame exame, Map<String, String> dados){
+    public void emitirLaudo(Exame exame, Map<String, String> dados){
         exame.preencherDados(dados);
     }
 

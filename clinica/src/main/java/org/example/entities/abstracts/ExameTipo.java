@@ -12,6 +12,8 @@ import org.example.entities.interfaces.INotificador;
 import org.example.entities.interfaces.IValidador;
 import org.example.entities.models.Paciente;
 
+import com.itextpdf.layout.Document;
+
 import javax.mail.MessagingException;
 
 @Data
@@ -42,4 +44,5 @@ public abstract class ExameTipo{
     public abstract Object gerarLaudo();
     public abstract <T> T aceitar(ExameVisitor<T> visitor);
     public abstract void realizarExame();
+    public abstract void montarCorpoDocumento(Document doc, Map<String, String> dados);
 }

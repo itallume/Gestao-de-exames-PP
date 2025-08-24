@@ -3,6 +3,8 @@ package org.example.entities.exame;
 import org.example.entities.abstracts.ExameLaboratorial;
 import org.example.entities.interfaces.ExameVisitor;
 
+import com.itextpdf.layout.Document;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,4 +33,12 @@ public class ExameSangue extends ExameLaboratorial {
     public void realizarExame() {
         System.out.println("Realizando exame de sangue do paciente: "+ super.getPaciente().getNome());
     }
+
+    @Override
+    public void montarCorpoDocumento(Document doc, Map<String, String> dados) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'montarCorpoDocumento'");
+    }
+
+
 }
