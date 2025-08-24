@@ -1,4 +1,4 @@
-package org.example.entities;
+package org.example.entities.desconto;
 
 import lombok.AllArgsConstructor;
 import org.example.entities.abstracts.DescontoBase;

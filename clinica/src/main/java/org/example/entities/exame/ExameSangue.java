@@ -1,4 +1,4 @@
-package org.example.entities;
+package org.example.entities.exame;
 
 import org.example.entities.abstracts.ExameLaboratorial;
 import org.example.entities.interfaces.ExameVisitor;

@@ -1,4 +1,4 @@
-package org.example.entities;
+package org.example.entities.filaPrioridade;
 
 import org.example.entities.interfaces.InserirExameStrategy;
 import org.example.entities.models.Exame;

@@ -1,4 +1,4 @@
-package org.example.entities;
+package org.example.entities.desconto;
 
 import org.example.entities.abstracts.DescontoBase;
 import org.example.entities.interfaces.Desconto;

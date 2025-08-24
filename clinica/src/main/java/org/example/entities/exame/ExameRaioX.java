@@ -1,4 +1,4 @@
-package org.example.entities;
+package org.example.entities.exame;
 
 import lombok.Data;
 import org.example.entities.abstracts.ExameImagem;

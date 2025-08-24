@@ -1,6 +1,11 @@
 package org.example.entities;
 
 import org.example.entities.interfaces.ExameVisitor;
+import org.example.entities.exame.ExameColonoscopia;
+import org.example.entities.exame.ExameRaioX;
+import org.example.entities.exame.ExameSangue;
+import org.example.entities.exame.ExameRessonanciaMagnetica;
+import org.example.entities.exame.ExameEndoscopiaDigestivaAlta;
 
 public class PrecoVisitor implements ExameVisitor<Double> {
     @Override
