@@ -28,8 +28,8 @@ public class ValidadorColesterol extends ValidadorLaboratorial {
                 } else {
                     dados.put("colesterolDiagnostico", "Alto");
                 }
+                System.out.println("Validação do Colesterol concluída.");
             }
-            System.out.println("Validando colesterol...");
         }
 
         if (proximo != null) {

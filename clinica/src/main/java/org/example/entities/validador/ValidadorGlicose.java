@@ -30,8 +30,8 @@ public class ValidadorGlicose extends ValidadorLaboratorial {
                 } else {
                     dados.put("glicoseDiagnostico", "Diabetes");
                 }
+                System.out.println("Validanção da glicose concluída.");
             }
-            System.out.println("Validando glicose...");
         }
 
         if (proximo != null) {

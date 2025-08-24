@@ -37,8 +37,8 @@ public class ValidadorCreatinina extends ValidadorLaboratorial {
                 } else {
                     dados.put("creatininaDiagnostico", "Normal");
                 }
+                System.out.println("Validação da creatinina concluída.");
             }
-            System.out.println("Validando creatinina...");
         }
 
         if (proximo != null) {

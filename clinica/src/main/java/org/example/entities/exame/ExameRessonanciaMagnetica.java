@@ -1,5 +1,7 @@
 package org.example.entities.exame;
 
+import org.example.entities.abstracts.ExameEndoscopico;
+import org.example.entities.abstracts.ExameImagem;
 import org.example.entities.abstracts.ExameLaboratorial;
 import org.example.entities.interfaces.ExameVisitor;
 
@@ -9,7 +11,7 @@ import com.itextpdf.layout.element.*;
 
 import java.util.Map;
 
-public class ExameRessonanciaMagnetica extends ExameLaboratorial {
+public class ExameRessonanciaMagnetica extends ExameImagem {
     @Override
     public void preencherDados(Map<String, String> dados) {
 

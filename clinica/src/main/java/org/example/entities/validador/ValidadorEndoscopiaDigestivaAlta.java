@@ -29,9 +29,9 @@ public class ValidadorEndoscopiaDigestivaAlta extends ValidadorLaboratorial {
             if (sedacao == null || sedacao.trim().isEmpty()) {
                 dados.put("sedacao", "Não informada");
             }
+            System.out.println("Validação da Endoscopia Digestiva Alta concluída.");
         }
 
-        System.out.println("Validação da Endoscopia Digestiva Alta concluída.");
 
         if (proximo != null) {
             proximo.validar(exame);

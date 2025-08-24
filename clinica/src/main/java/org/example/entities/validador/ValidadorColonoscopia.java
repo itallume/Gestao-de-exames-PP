@@ -31,9 +31,9 @@ public class ValidadorColonoscopia extends ValidadorLaboratorial {
             if (preparoIntestinal == null || preparoIntestinal.trim().isEmpty()) {
                 dados.put("preparoIntestinal", "Não informado");
             }
+            System.out.println("Validação da Colonoscopia concluída.");
         }
 
-        System.out.println("Validação da Colonoscopia concluída.");
 
         if (proximo != null) {
             proximo.validar(exame);

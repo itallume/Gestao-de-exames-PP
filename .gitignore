@@ -1,3 +1,6 @@
 .idea/
 target
 /.metadata/
+./clinica/.classpath
+./clinica/.project
+./clinica/.settings

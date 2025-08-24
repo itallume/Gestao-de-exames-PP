@@ -17,7 +17,7 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) throws Exception {
         // Cadastro de paciente e médicos
-        Paciente paciente = new Paciente("Maria", 65, "999999999", "maria@email.com", "Unimed", "F");
+        Paciente paciente = new Paciente("Maria", 65, "999999999", "itallo.oliver21@gmail.com", "Unimed", "F");
         Medico medicoSolicitante = new Medico("Dr. João", "12345", "Clínico Geral");
         Medico medicoResponsavel = new Medico("Dra. Ana", "54321", "Endoscopia");
 
@@ -28,12 +28,12 @@ public class Main {
         ExameSangue exame3 = new ExameSangue();
 
         // Requisitar exames
+        ExameOrdem ordem3 = lab.requisitarExame(paciente, medicoSolicitante, medicoResponsavel, exame3,
+                Prioridade.ROTINA);
         ExameOrdem ordem1 = lab.requisitarExame(paciente, medicoSolicitante, medicoResponsavel, exame1,
                 Prioridade.URGENTE);
         ExameOrdem ordem2 = lab.requisitarExame(paciente, medicoSolicitante, medicoResponsavel, exame2,
                 Prioridade.POUCO_URGENTE);
-        ExameOrdem ordem3 = lab.requisitarExame(paciente, medicoSolicitante, medicoResponsavel, exame3,
-                Prioridade.ROTINA);
 
         // Corrige: garante que o paciente está setado dentro do exame
         ordem1.getExameTipo().setPaciente(paciente);

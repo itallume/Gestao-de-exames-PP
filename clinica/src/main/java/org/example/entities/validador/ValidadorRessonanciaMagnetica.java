@@ -35,8 +35,8 @@ public class ValidadorRessonanciaMagnetica extends ValidadorLaboratorial {
             if (contraste != null && !contraste.trim().isEmpty() && (dosagem == null || dosagem.trim().isEmpty())) {
                 throw new Exception("A dosagem do contraste deve ser informada se o contraste foi utilizado.");
             }
+            System.out.println("Validação da Ressonância Magnética concluída.");
         }
-        System.out.println("Validação da Ressonância Magnética concluída.");
 
         if (proximo != null) {
             proximo.validar(exame);
