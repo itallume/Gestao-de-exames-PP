@@ -1,0 +1,256 @@
+ago. 25, 2025 4:03:30 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Itallo Oliveira Ferreira requisitou o exame ExameEndoscopico()
+ago. 25, 2025 4:03:30 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente João Paulo Azevedo Baia requisitou o exame ExameEndoscopico()
+ago. 25, 2025 4:03:30 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Lauro Sthephan requisitou o exame ExameProcedimento(id=0, laudo=null, notificadores=null, paciente=null, precoBase=0.0, dataRealizacao=null, dados=null)
+ago. 25, 2025 4:03:30 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Fernando Júlio requisitou o exame ExameRaioX()
+ago. 25, 2025 4:03:30 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Marcos Oliveira requisitou o exame ExameProcedimento(id=0, laudo=null, notificadores=null, paciente=null, precoBase=0.0, dataRealizacao=null, dados=null)
+ago. 25, 2025 4:03:30 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Marcos Oliveira requisitou o exame ExameRaioX()
+ago. 25, 2025 4:03:30 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Itallo Oliveira Ferreira solicitou calculo de preço
+ago. 25, 2025 4:03:30 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente João Paulo Azevedo Baia solicitou calculo de preço
+ago. 25, 2025 4:03:30 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Lauro Sthephan solicitou calculo de preço
+ago. 25, 2025 4:03:30 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Fernando Júlio solicitou calculo de preço
+ago. 25, 2025 4:03:30 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Marcos Oliveira solicitou calculo de preço
+ago. 25, 2025 4:03:30 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Itallo Oliveira Ferreira tentou pagar o exame
+ago. 25, 2025 4:03:30 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente João Paulo Azevedo Baia tentou pagar o exame
+ago. 25, 2025 4:03:30 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Lauro Sthephan tentou pagar o exame
+ago. 25, 2025 4:03:30 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Fernando Júlio tentou pagar o exame
+ago. 25, 2025 4:03:30 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Marcos Oliveira tentou pagar o exame
+ago. 25, 2025 4:03:30 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Itallo Oliveira Ferreiraentrou na fila de espera
+ago. 25, 2025 4:03:30 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente João Paulo Azevedo Baiaentrou na fila de espera
+ago. 25, 2025 4:03:30 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Lauro Sthephanentrou na fila de espera
+ago. 25, 2025 4:03:30 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Fernando Júlioentrou na fila de espera
+ago. 25, 2025 4:03:30 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Marcos Oliveiraentrou na fila de espera
+ago. 25, 2025 4:03:30 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Marcos Oliveiraentrou na fila de espera
+ago. 25, 2025 4:03:30 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Itallo Oliveira Ferreiratentou realizar o exame
+ago. 25, 2025 4:03:30 AM org.example.LoggerMain info
+INFORMAÇÕES: O laudo do exame do paciente Itallo Oliveira Ferreira foi emitido
+ago. 25, 2025 4:03:45 AM org.example.LoggerMain info
+INFORMAÇÕES: O laudo do exame do paciente Itallo Oliveira Ferreira foi emitido com notificação
+ago. 25, 2025 4:03:45 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Fernando Júliotentou realizar o exame
+ago. 25, 2025 4:03:45 AM org.example.LoggerMain info
+INFORMAÇÕES: O laudo do exame do paciente Fernando Júlio foi emitido
+ago. 25, 2025 4:04:01 AM org.example.LoggerMain info
+INFORMAÇÕES: O laudo do exame do paciente Fernando Júlio foi emitido com notificação
+ago. 25, 2025 4:04:01 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente João Paulo Azevedo Baiatentou realizar o exame
+ago. 25, 2025 4:04:01 AM org.example.LoggerMain info
+INFORMAÇÕES: O laudo do exame do paciente João Paulo Azevedo Baia foi emitido
+ago. 25, 2025 4:04:15 AM org.example.LoggerMain info
+INFORMAÇÕES: O laudo do exame do paciente João Paulo Azevedo Baia foi emitido com notificação
+ago. 25, 2025 4:04:15 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Marcos Oliveiratentou realizar o exame
+ago. 25, 2025 4:04:15 AM org.example.LoggerMain info
+INFORMAÇÕES: O laudo do exame do paciente Marcos Oliveira foi emitido
+ago. 25, 2025 4:04:29 AM org.example.LoggerMain info
+INFORMAÇÕES: O laudo do exame do paciente Marcos Oliveira foi emitido com notificação
+ago. 25, 2025 4:04:29 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Marcos Oliveiratentou realizar o exame
+ago. 25, 2025 4:04:29 AM org.example.LoggerMain info
+INFORMAÇÕES: O laudo do exame do paciente Marcos Oliveira foi emitido
+ago. 25, 2025 4:04:44 AM org.example.LoggerMain info
+INFORMAÇÕES: O laudo do exame do paciente Marcos Oliveira foi emitido com notificação
+ago. 25, 2025 4:04:44 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Lauro Sthephantentou realizar o exame
+ago. 25, 2025 4:04:44 AM org.example.LoggerMain info
+INFORMAÇÕES: O laudo do exame do paciente Lauro Sthephan foi emitido
+ago. 25, 2025 4:04:58 AM org.example.LoggerMain info
+INFORMAÇÕES: O laudo do exame do paciente Lauro Sthephan foi emitido com notificação
+ago. 25, 2025 4:15:05 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Itallo Oliveira Ferreira requisitou o exame ExameEndoscopico()
+ago. 25, 2025 4:15:06 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente João Paulo Azevedo Baia requisitou o exame ExameEndoscopico()
+ago. 25, 2025 4:15:06 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Lauro Sthephan requisitou o exame ExameProcedimento(id=0, laudo=null, notificadores=null, paciente=null, precoBase=0.0, dataRealizacao=null, dados=null)
+ago. 25, 2025 4:15:06 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Fernando Júlio requisitou o exame ExameRaioX()
+ago. 25, 2025 4:15:06 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Marcos Oliveira requisitou o exame ExameProcedimento(id=0, laudo=null, notificadores=null, paciente=null, precoBase=0.0, dataRealizacao=null, dados=null)
+ago. 25, 2025 4:15:06 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Marcos Oliveira requisitou o exame ExameRaioX()
+ago. 25, 2025 4:15:06 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Itallo Oliveira Ferreira solicitou calculo de preço
+ago. 25, 2025 4:15:06 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente João Paulo Azevedo Baia solicitou calculo de preço
+ago. 25, 2025 4:15:06 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Lauro Sthephan solicitou calculo de preço
+ago. 25, 2025 4:15:06 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Fernando Júlio solicitou calculo de preço
+ago. 25, 2025 4:15:06 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Marcos Oliveira solicitou calculo de preço
+ago. 25, 2025 4:15:06 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Itallo Oliveira Ferreira tentou pagar o exame
+ago. 25, 2025 4:15:06 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Itallo Oliveira Ferreira pagou o exame
+ago. 25, 2025 4:15:06 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente João Paulo Azevedo Baia tentou pagar o exame
+ago. 25, 2025 4:15:06 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente João Paulo Azevedo Baia pagou o exame
+ago. 25, 2025 4:15:06 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Lauro Sthephan tentou pagar o exame
+ago. 25, 2025 4:15:06 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Lauro Sthephan pagou o exame
+ago. 25, 2025 4:15:06 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Fernando Júlio tentou pagar o exame
+ago. 25, 2025 4:15:06 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Fernando Júlio pagou o exame
+ago. 25, 2025 4:15:06 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Marcos Oliveira tentou pagar o exame
+ago. 25, 2025 4:15:06 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Marcos Oliveira pagou o exame
+ago. 25, 2025 4:15:06 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Itallo Oliveira Ferreira entrou na fila de espera
+ago. 25, 2025 4:15:06 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente João Paulo Azevedo Baia entrou na fila de espera
+ago. 25, 2025 4:15:06 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Lauro Sthephan entrou na fila de espera
+ago. 25, 2025 4:15:06 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Fernando Júlio entrou na fila de espera
+ago. 25, 2025 4:15:06 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Marcos Oliveira entrou na fila de espera
+ago. 25, 2025 4:15:06 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Marcos Oliveira entrou na fila de espera
+ago. 25, 2025 4:15:06 AM org.example.LoggerMain info
+INFORMAÇÕES: O próximo paciente da Fila foi chamado!
+ago. 25, 2025 4:15:06 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Itallo Oliveira Ferreiratentou realizar o exame
+ago. 25, 2025 4:15:06 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Itallo Oliveira Ferreira realizou o exame
+ago. 25, 2025 4:15:06 AM org.example.LoggerMain info
+INFORMAÇÕES: O laudo do exame do paciente Itallo Oliveira Ferreira foi emitido
+ago. 25, 2025 4:15:19 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Itallo Oliveira Ferreira requisitou o exame ExameEndoscopico()
+ago. 25, 2025 4:15:19 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente João Paulo Azevedo Baia requisitou o exame ExameEndoscopico()
+ago. 25, 2025 4:15:19 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Lauro Sthephan requisitou o exame ExameProcedimento(id=0, laudo=null, notificadores=null, paciente=null, precoBase=0.0, dataRealizacao=null, dados=null)
+ago. 25, 2025 4:15:19 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Fernando Júlio requisitou o exame ExameRaioX()
+ago. 25, 2025 4:15:19 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Marcos Oliveira requisitou o exame ExameProcedimento(id=0, laudo=null, notificadores=null, paciente=null, precoBase=0.0, dataRealizacao=null, dados=null)
+ago. 25, 2025 4:15:19 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Marcos Oliveira requisitou o exame ExameRaioX()
+ago. 25, 2025 4:15:19 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Itallo Oliveira Ferreira solicitou calculo de preço
+ago. 25, 2025 4:15:19 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente João Paulo Azevedo Baia solicitou calculo de preço
+ago. 25, 2025 4:15:19 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Lauro Sthephan solicitou calculo de preço
+ago. 25, 2025 4:15:19 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Fernando Júlio solicitou calculo de preço
+ago. 25, 2025 4:15:19 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Marcos Oliveira solicitou calculo de preço
+ago. 25, 2025 4:15:19 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Itallo Oliveira Ferreira tentou pagar o exame
+ago. 25, 2025 4:15:19 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Itallo Oliveira Ferreira pagou o exame
+ago. 25, 2025 4:15:19 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente João Paulo Azevedo Baia tentou pagar o exame
+ago. 25, 2025 4:15:19 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente João Paulo Azevedo Baia pagou o exame
+ago. 25, 2025 4:15:19 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Lauro Sthephan tentou pagar o exame
+ago. 25, 2025 4:15:19 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Lauro Sthephan pagou o exame
+ago. 25, 2025 4:15:19 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Fernando Júlio tentou pagar o exame
+ago. 25, 2025 4:15:19 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Fernando Júlio pagou o exame
+ago. 25, 2025 4:15:19 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Marcos Oliveira tentou pagar o exame
+ago. 25, 2025 4:15:19 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Marcos Oliveira pagou o exame
+ago. 25, 2025 4:15:19 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Itallo Oliveira Ferreira entrou na fila de espera
+ago. 25, 2025 4:15:19 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente João Paulo Azevedo Baia entrou na fila de espera
+ago. 25, 2025 4:15:19 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Lauro Sthephan entrou na fila de espera
+ago. 25, 2025 4:15:19 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Fernando Júlio entrou na fila de espera
+ago. 25, 2025 4:15:19 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Marcos Oliveira entrou na fila de espera
+ago. 25, 2025 4:15:19 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Marcos Oliveira entrou na fila de espera
+ago. 25, 2025 4:15:19 AM org.example.LoggerMain info
+INFORMAÇÕES: O próximo paciente da Fila foi chamado!
+ago. 25, 2025 4:15:19 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Itallo Oliveira Ferreiratentou realizar o exame
+ago. 25, 2025 4:15:19 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Itallo Oliveira Ferreira realizou o exame
+ago. 25, 2025 4:15:19 AM org.example.LoggerMain info
+INFORMAÇÕES: O laudo do exame do paciente Itallo Oliveira Ferreira foi emitido
+ago. 25, 2025 4:15:34 AM org.example.LoggerMain info
+INFORMAÇÕES: O laudo do exame do paciente Itallo Oliveira Ferreira foi emitido com notificação
+ago. 25, 2025 4:15:34 AM org.example.LoggerMain info
+INFORMAÇÕES: O próximo paciente da Fila foi chamado!
+ago. 25, 2025 4:15:34 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Fernando Júliotentou realizar o exame
+ago. 25, 2025 4:15:34 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Fernando Júlio realizou o exame
+ago. 25, 2025 4:15:34 AM org.example.LoggerMain info
+INFORMAÇÕES: O laudo do exame do paciente Fernando Júlio foi emitido
+ago. 25, 2025 4:15:49 AM org.example.LoggerMain info
+INFORMAÇÕES: O laudo do exame do paciente Fernando Júlio foi emitido com notificação
+ago. 25, 2025 4:15:49 AM org.example.LoggerMain info
+INFORMAÇÕES: O próximo paciente da Fila foi chamado!
+ago. 25, 2025 4:15:49 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente João Paulo Azevedo Baiatentou realizar o exame
+ago. 25, 2025 4:15:49 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente João Paulo Azevedo Baia realizou o exame
+ago. 25, 2025 4:15:49 AM org.example.LoggerMain info
+INFORMAÇÕES: O laudo do exame do paciente João Paulo Azevedo Baia foi emitido
+ago. 25, 2025 4:16:04 AM org.example.LoggerMain info
+INFORMAÇÕES: O laudo do exame do paciente João Paulo Azevedo Baia foi emitido com notificação
+ago. 25, 2025 4:16:04 AM org.example.LoggerMain info
+INFORMAÇÕES: O próximo paciente da Fila foi chamado!
+ago. 25, 2025 4:16:04 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Marcos Oliveiratentou realizar o exame
+ago. 25, 2025 4:16:04 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Marcos Oliveira realizou o exame
+ago. 25, 2025 4:16:04 AM org.example.LoggerMain info
+INFORMAÇÕES: O laudo do exame do paciente Marcos Oliveira foi emitido
+ago. 25, 2025 4:16:18 AM org.example.LoggerMain info
+INFORMAÇÕES: O laudo do exame do paciente Marcos Oliveira foi emitido com notificação
+ago. 25, 2025 4:16:18 AM org.example.LoggerMain info
+INFORMAÇÕES: O próximo paciente da Fila foi chamado!
+ago. 25, 2025 4:16:18 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Marcos Oliveiratentou realizar o exame
+ago. 25, 2025 4:16:18 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Marcos Oliveira realizou o exame
+ago. 25, 2025 4:16:18 AM org.example.LoggerMain info
+INFORMAÇÕES: O laudo do exame do paciente Marcos Oliveira foi emitido
+ago. 25, 2025 4:16:33 AM org.example.LoggerMain info
+INFORMAÇÕES: O laudo do exame do paciente Marcos Oliveira foi emitido com notificação
+ago. 25, 2025 4:16:33 AM org.example.LoggerMain info
+INFORMAÇÕES: O próximo paciente da Fila foi chamado!
+ago. 25, 2025 4:16:33 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Lauro Sthephantentou realizar o exame
+ago. 25, 2025 4:16:33 AM org.example.LoggerMain info
+INFORMAÇÕES: O paciente Lauro Sthephan realizou o exame
+ago. 25, 2025 4:16:33 AM org.example.LoggerMain info
+INFORMAÇÕES: O laudo do exame do paciente Lauro Sthephan foi emitido
+ago. 25, 2025 4:16:48 AM org.example.LoggerMain info
+INFORMAÇÕES: O laudo do exame do paciente Lauro Sthephan foi emitido com notificação

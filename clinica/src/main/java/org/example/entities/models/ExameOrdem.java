@@ -2,6 +2,8 @@ package org.example.entities.models;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import org.example.LoggerMain;
 import org.example.Enum.Prioridade;
 import org.example.entities.abstracts.ExameProcedimento;
 import org.example.entities.interfaces.ExameVisitor;
@@ -41,6 +43,7 @@ public class ExameOrdem {
 
     public void realizarExame() {
         exameTipo.realizarExame();
+        LoggerMain.info("O paciente " + paciente.getNome() + " realizou o exame");
     }
 
     public void preencherDados(Map<String, String> dados) {

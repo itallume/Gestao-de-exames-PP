@@ -1,5 +1,6 @@
 package org.example.entities;
 
+import org.example.LoggerMain;
 import org.example.Enum.Campanha;
 import org.example.Enum.Prioridade;
 import org.example.entities.abstracts.ExameProcedimento;
@@ -30,22 +31,27 @@ public class LaboratorioFachada {
     public ExameOrdem requisitarExame(Paciente paciente, Medico medicoSolicitante, Medico medicoSResponsavel,
             ExameProcedimento exameTipo, Prioridade prioridade) {
         int id = GeradorId.getInstance().gerarId();
+        LoggerMain.info("O paciente " + paciente.getNome() + " requisitou o exame " + exameTipo.toString());
         return new ExameOrdem(id, paciente, medicoSolicitante, medicoSResponsavel, exameTipo,
                 prioridade);
     }
 
     public double calcularPreco(List<ExameOrdem> exames, Paciente paciente, List<Campanha> campanhasAtivas) {
         Desconto pagamento = DescontoFachada.verificarDescontosPossiveis(exames, paciente, campanhasAtivas);
+        LoggerMain.info("O paciente " + paciente.getNome() + " solicitou calculo de preço");
         return pagamento.calcularPreco(precoVisitor);
     }
 
     public void pagarExames(List<ExameOrdem> exames, Paciente paciente, List<Campanha> campanhasAtivas) {
         Desconto pagamento = DescontoFachada.verificarDescontosPossiveis(exames, paciente, campanhasAtivas);
+        LoggerMain.info("O paciente " + paciente.getNome() + " tentou pagar o exame");
         pagamento.pagar();
+        LoggerMain.info("O paciente " + paciente.getNome() + " pagou o exame");
     }
 
     public void entrarNaFilaDeEspera(ExameOrdem exame) {
         fila.adicionarExame(exame);
+        LoggerMain.info("O paciente " + exame.getPaciente().getNome() + " entrou na fila de espera");
     }
 
     public ExameOrdem chamarProximoDaFila() throws Exception {
@@ -58,8 +64,9 @@ public class LaboratorioFachada {
 
     public void realizarExame(ExameOrdem exame) throws Exception {
         if (!exame.isPago()) {
-            throw new Exception("Não é possével realizar o exame de id " + exame.getId() + ", pois não está pago.");
+            throw new Exception("Não é possível realizar o exame de id " + exame.getId() + ", pois não está pago.");
         }
+        LoggerMain.info("O paciente " + exame.getPaciente().getNome() + " tentou realizar o exame");
         exame.realizarExame();
     }
 
@@ -69,7 +76,9 @@ public class LaboratorioFachada {
         IValidador validador = ValidadorFachada.getValidador(exame);
         try {
             validador.validar(exame.getExameTipo());
+            LoggerMain.info("O laudo do exame do paciente " + exame.getPaciente().getNome() + " foi emitido");
         } catch (Exception e) {
+            LoggerMain.erro("O laudo do exame do paciente " + exame.getPaciente().getNome() + " não pode ser emitido");
             throw new RuntimeException("Erro de validação: " + e.getMessage(), e);
         }
     }
@@ -80,7 +89,9 @@ public class LaboratorioFachada {
         try {
             NotificardorEmail notificador = new NotificardorEmail();
             notificador.notificarComAnexo(exame.getPaciente(), tipoLaudo, exame.getExameTipo());
+            LoggerMain.info("O laudo do exame do paciente " + exame.getPaciente().getNome() + " foi emitido com notificação");
         } catch (Exception e) {
+            LoggerMain.erro("O laudo do exame do paciente " + exame.getPaciente().getNome() + " não pode ser emitido com notificação");
             throw new Exception("Erro ao enviar notificação: " + e.getMessage(), e);
         }
     }

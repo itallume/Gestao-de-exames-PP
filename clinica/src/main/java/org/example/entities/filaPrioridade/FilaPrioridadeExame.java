@@ -1,5 +1,6 @@
 package org.example.entities.filaPrioridade;
 
+import org.example.LoggerMain;
 import org.example.entities.interfaces.InserirExameStrategy;
 import org.example.entities.models.ExameOrdem;
 
@@ -27,12 +28,14 @@ public class FilaPrioridadeExame {
 
     public ExameOrdem chamarProximo() throws Exception {
         if (fila.isEmpty()){
+            LoggerMain.info("Todos os pacientes da fila foram atendidos!");
             throw new Exception("Fila vazia...");
         }
 
         ExameOrdem proximoExame = fila.getFirst();
         fila.removeFirst();
         System.out.println(this);
+        LoggerMain.info("O próximo paciente da Fila foi chamado!");
         return proximoExame;
     }
 
