@@ -1,0 +1,356 @@
+@startuml Sistema de Gestão de Exames Médicos - Atualizado
+!theme plain
+title Sistema de Gestão de Exames Médicos - ST Diagnósticos\nArquitetura Atualizada com Padrões de Design
+
+' ==================== PADRÃO FACADE ====================
+package "Facade Pattern" {
+    class LaboratorioFachada {
+        - fila: FilaPrioridadeExame
+        - geradorId: GeradorId
+        - precoVisitor: ExameVisitor<Double>
+        
+        + requisitarExame(paciente, medicoSolicitante, medicoResponsavel, exameTipo, prioridade): ExameOrdem
+        + calcularPreco(exames, paciente, campanhas): double
+        + pagarExames(exames, paciente, campanhas): void
+        + entrarNaFilaDeEspera(exame): void
+        + chamarProximoDaFila(): ExameOrdem
+        + realizarExame(exame): void
+        + emitirLaudo(exame, dados): void
+        + emitirLaudoComNotificacao(exame, dados, tipoLaudo): void
+    }
+}
+
+' ==================== PADRÃO SINGLETON ====================
+package "Singleton Pattern" {
+    class GeradorId {
+        - instance: GeradorId {static}
+        - contador: int
+        
+        - GeradorId()
+        + getInstance(): GeradorId {static}
+        + gerarId(): int
+    }
+}
+
+' ==================== MODELOS DE DADOS ====================
+package "Models" {
+    class Paciente {
+        - nome: String
+        - idade: int
+        - telefone: String
+        - email: String
+        - convenio: String
+        - sexo: String
+    }
+    
+    class Medico {
+        - nome: String
+        - crm: String
+        - especialidade: String
+    }
+    
+    class ExameOrdem {
+        - id: int
+        - paciente: Paciente
+        - medicoSolicitante: Medico
+        - medicoResponsavel: Medico
+        - exameTipo: ExameProcedimento
+        - isPago: boolean
+        - dataRealizacao: Date
+        - prioridade: Prioridade
+        
+        + calcularPreco(visitor): Double
+        + realizarExame(): void
+        + preencherDados(dados): void
+    }
+}
+
+' ==================== ENUMERAÇÕES ====================
+package "Enums" {
+    enum Prioridade {
+        URGENTE(3)
+        POUCO_URGENTE(2)
+        ROTINA(1)
+    }
+    
+    enum Campanha {
+        NOVEMBRO_AZUL(3)
+        OUTUBRO_ROSA(2)
+        SETEMBRO_AMARELO(1)
+    }
+}
+
+' ==================== PADRÃO VISITOR ====================
+package "Visitor Pattern" {
+    interface ExameVisitor<T> {
+        + visitarExame(exameSangue): T
+        + visitarExame(exameRaioX): T
+        + visitarExame(exameColonoscopia): T
+        + visitarExame(exameRessonanciaMagnetica): T
+        + visitarExame(exameEndoscopiaDigestivaAlta): T
+    }
+    
+    class PrecoVisitor {
+        + visitarExame(exameSangue): Double [15.00]
+        + visitarExame(exameRaioX): Double [70.00]
+        + visitarExame(exameColonoscopia): Double [400.00]
+        + visitarExame(exameRessonanciaMagnetica): Double [320.00]
+        + visitarExame(exameEndoscopiaDigestivaAlta): Double [450.00]
+    }
+}
+
+' ==================== HIERARQUIA DE EXAMES ====================
+package "Exames Hierarchy" {
+    abstract class ExameProcedimento {
+        - id: int
+        - laudo: ILaudo
+        - notificadores: List<INotificador>
+        - paciente: Paciente
+        - precoBase: double
+        - dataRealizacao: Date
+        - dados: Map<String, String>
+        
+        + adicionarSubsribe(notificador): void
+        + removerSubsribe(notificador): void
+        + notificarTodos(): void
+        
+        + {abstract} preencherDados(dados): void
+        + {abstract} gerarLaudo(): Object
+        + {abstract} aceitar(visitor): T
+        + {abstract} realizarExame(): void
+        + {abstract} montarPDF(doc, dados): Document
+        + {abstract} montarHtml(html, dados): StringBuilder
+        + {abstract} montarTxt(sb, dados): StringBuilder
+    }
+    
+    abstract class ExameEndoscopico extends ExameProcedimento
+    abstract class ExameImagem extends ExameProcedimento  
+    abstract class ExameLaboratorial extends ExameProcedimento
+    
+    class ExameColonoscopia extends ExameEndoscopico
+    class ExameEndoscopiaDigestivaAlta extends ExameEndoscopico
+    class ExameRaioX extends ExameImagem
+    class ExameRessonanciaMagnetica extends ExameImagem
+    class ExameSangue extends ExameLaboratorial
+}
+
+' ==================== PADRÃO STRATEGY - FILA DE PRIORIDADE ====================
+package "Strategy Pattern - Queue" {
+    interface InserirExameStrategy {
+        + inserir(fila, exame): void
+    }
+    
+    class InserirUrgente implements InserirExameStrategy {
+        + inserir(fila, exame): void [addFirst]
+    }
+    
+    class InserirPoucoUrgente implements InserirExameStrategy {
+        + inserir(fila, exame): void [middle priority]
+    }
+    
+    class InserirRotina implements InserirExameStrategy {
+        + inserir(fila, exame): void [addLast]
+    }
+    
+    class FilaPrioridadeExame {
+        - fila: LinkedList<ExameOrdem>
+        - strategies: Map<Prioridade, InserirExameStrategy>
+        
+        + adicionarExame(exame): void
+        + chamarProximo(): ExameOrdem
+    }
+}
+
+' ==================== PADRÃO DECORATOR - DESCONTOS ====================
+package "Decorator Pattern - Discounts" {
+    interface Desconto {
+        + calcularPreco(visitor): Double
+        + pagar(): void
+    }
+    
+    class Pagamento implements Desconto {
+        - exames: List<ExameOrdem>
+        - dataPagamento: Date
+        - paciente: Paciente
+        
+        + calcularPreco(visitor): Double
+        + pagar(): void
+    }
+    
+    abstract class DescontoBase implements Desconto {
+        - wrappee: Desconto
+        
+        + calcularPreco(visitor): Double
+        + pagar(): void
+    }
+    
+    class DescontoIdoso extends DescontoBase {
+        + calcularPreco(visitor): Double [8% desconto]
+    }
+    
+    class DescontoConvenio extends DescontoBase {
+        + calcularPreco(visitor): Double [15% desconto]
+    }
+    
+    class DescontoNovembroAzul extends DescontoBase {
+        + calcularPreco(visitor): Double [15% desconto]
+    }
+    
+    class DescontoOutubroRosa extends DescontoBase {
+        + calcularPreco(visitor): Double [15% desconto]
+    }
+    
+    class DescontoFachada {
+        + verificarDescontosPossiveis(exames, paciente, campanhas): Desconto {static}
+    }
+}
+
+' ==================== PADRÃO CHAIN OF RESPONSIBILITY - VALIDADORES ====================
+package "Chain of Responsibility - Validators" {
+    interface IValidador {
+        + validar(exame): void
+        + setProximo(validador): IValidador
+    }
+    
+    class ValidadorFachada {
+        + getValidador(exame): IValidador {static}
+        + getChainExameEndoscopico(): IValidador {static}
+        + getChainExameImagem(): IValidador {static}
+        + getChainExameLaboratorial(): IValidador {static}
+    }
+    
+    ' Validadores Endoscópicos
+    class ValidadorColonoscopia implements IValidador {
+        + validar(exame): void [descricao, endoscopista]
+    }
+    
+    class ValidadorEndoscopiaDigestivaAlta implements IValidador {
+        + validar(exame): void [descricao, endoscopista]
+    }
+    
+    ' Validadores de Imagem
+    class ValidadorRaioX implements IValidador {
+        + validar(exame): void [descricao, radiologista, imagens]
+    }
+    
+    class ValidadorRessonanciaMagnetica implements IValidador {
+        + validar(exame): void [descricao, radiologista, protocolo]
+    }
+    
+    ' Validadores Laboratoriais
+    class ValidadorColesterol implements IValidador {
+        + validar(exame): void [colesterol]
+    }
+    
+    class ValidadorCreatinina implements IValidador {
+        + validar(exame): void [creatinina]
+    }
+    
+    class ValidadorGlicose implements IValidador {
+        + validar(exame): void [glicose]
+    }
+}
+
+' ==================== PADRÃO BRIDGE - LAUDOS ====================
+package "Bridge Pattern - Reports" {
+    interface ILaudo {
+        + gerarDocumento(exame): Object
+    }
+    
+    class LaudoTxt implements ILaudo {
+        + gerarDocumento(exame): String
+    }
+    
+    class LaudoHTML implements ILaudo {
+        + gerarDocumento(exame): String
+    }
+    
+    class LaudoPdf implements ILaudo {
+        + gerarDocumento(exame): byte[]
+    }
+}
+
+' ==================== PADRÃO OBSERVER - NOTIFICAÇÕES ====================
+package "Observer Pattern - Notifications" {
+    interface INotificador {
+        + notificar(paciente, laudo): void
+        + notificarComAnexo(paciente, laudo): void
+    }
+    
+    class NotificardorEmail implements INotificador {
+        - host: String
+        - porta: int
+        - usuario: String
+        - senha: String
+        
+        + notificar(paciente, laudo): void
+        + notificarComAnexo(paciente, laudo): void
+        - criarArquivoLaudo(laudo, nomeArquivo): File
+        - configurarSessaoEmail(): Session
+    }
+    
+    class NotificadorSMS implements INotificador {
+        + notificar(paciente, laudo): void
+        + notificarComAnexo(paciente, laudo): void
+    }
+}
+
+' ==================== RELACIONAMENTOS ====================
+
+' Facade relationships
+LaboratorioFachada --> GeradorId : uses
+LaboratorioFachada --> FilaPrioridadeExame : manages
+LaboratorioFachada --> PrecoVisitor : uses
+LaboratorioFachada --> DescontoFachada : uses
+LaboratorioFachada --> ValidadorFachada : uses
+
+' Model relationships
+ExameOrdem --> Paciente : contains
+ExameOrdem --> Medico : contains
+ExameOrdem --> ExameProcedimento : contains
+ExameOrdem --> Prioridade : has
+
+' Visitor relationships
+PrecoVisitor ..|> ExameVisitor
+ExameProcedimento --> ExameVisitor : accepts
+
+' Strategy relationships
+FilaPrioridadeExame --> InserirExameStrategy : uses
+FilaPrioridadeExame --> ExameOrdem : manages
+
+' Decorator relationships
+DescontoFachada --> DescontoBase : creates
+DescontoBase --> Desconto : wraps
+Pagamento ..|> Desconto
+
+' Chain relationships
+ValidadorFachada --> IValidador : creates chains
+ValidadorColonoscopia --> ValidadorEndoscopiaDigestivaAlta : next
+ValidadorRaioX --> ValidadorRessonanciaMagnetica : next
+ValidadorColesterol --> ValidadorCreatinina : next
+ValidadorCreatinina --> ValidadorGlicose : next
+
+' Observer relationships
+ExameProcedimento --> INotificador : notifies
+ExameProcedimento --> ILaudo : generates
+
+' Bridge relationships
+ExameProcedimento --> ILaudo : uses
+
+note top of LaboratorioFachada : **Padrão Facade**\nInterface unificada para\ntodas as operações do laboratório
+
+note top of GeradorId : **Padrão Singleton**\nGeração única sequencial\nde IDs para exames
+
+note right of ExameVisitor : **Padrão Visitor**\nCalcular preços baseado\nno tipo específico do exame
+
+note right of InserirExameStrategy : **Padrão Strategy**\nInserção na fila baseada\nna prioridade do exame
+
+note left of Desconto : **Padrão Decorator**\nCombinação flexível\nde múltiplos descontos
+
+note left of IValidador : **Padrão Chain of Responsibility**\nValidação sequencial\nbaseada no tipo do exame
+
+note bottom of ILaudo : **Padrão Bridge**\nSeparação entre exames\ne formatos de laudo
+
+note bottom of INotificador : **Padrão Observer**\nNotificação automática\nde pacientes
+
+@enduml

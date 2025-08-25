@@ -6,7 +6,7 @@ import org.example.entities.LaboratorioFachada;
 import org.example.entities.exame.ExameColonoscopia;
 import org.example.entities.exame.ExameEndoscopiaDigestivaAlta;
 import org.example.entities.exame.ExameSangue;
-import org.example.entities.laudo.LaudoTxt;
+import org.example.entities.laudo.LaudoPdf;
 import org.example.entities.models.ExameOrdem;
 import org.example.entities.models.Medico;
 import org.example.entities.models.Paciente;
@@ -17,7 +17,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         // Cadastro de paciente e médicos
         System.out.println("----------------- Cadastrando pacientes -----------------");
-        Paciente paciente = new Paciente("Maria", 65, "999999999", "laurostephan@gmail.com", "Unimed", "F");
+        Paciente paciente = new Paciente("Maria", 65, "999999999", "itallo.oliver21@gmail.com", "Unimed", "F");
         Medico medicoSolicitante = new Medico("João", "12345", "Clínico Geral");
         Medico medicoResponsavel = new Medico("Ana", "54321", "Endoscopia");
 
@@ -76,65 +76,52 @@ public class Main {
             dados.put("medicoSolicitante", medicoSolicitante.getNome());
             dados.put("medicoResponsavel", medicoResponsavel.getNome());
             
-            // Dados específicos por tipo de exame
+            // Dados específicos por tipo de exame - APENAS campos validados
             if (proximo.getExameTipo() instanceof ExameColonoscopia) {
-                // Dados obrigatórios para Colonoscopia
+                // Campos obrigatórios validados: descricao, endoscopista
+                // Campos opcionais validados: preparoIntestinal (será preenchido como "Não informado" se vazio)
                 dados.put("descricao", "Colonoscopia realizada com sucesso. Mucosa intestinal preservada, sem sinais de lesões ou alterações patológicas.");
                 dados.put("endoscopista", medicoResponsavel.getNome());
                 dados.put("preparoIntestinal", "Adequado - preparo com polietilenoglicol");
-                dados.put("sedacao", "Realizada sedação consciente com midazolam");
-                dados.put("achados", "Mucosa normal, sem pólipos ou lesões");
                 
             } else if (proximo.getExameTipo() instanceof ExameEndoscopiaDigestivaAlta) {
-                // Dados obrigatórios para Endoscopia Digestiva Alta
+                // Campos obrigatórios validados: descricao, endoscopista
+                // Campos opcionais validados: sedacao (será preenchido como "Não informada" se vazio)
                 dados.put("descricao", "Endoscopia digestiva alta sem alterações. Esôfago, estômago e duodeno com mucosa normal.");
                 dados.put("endoscopista", medicoResponsavel.getNome());
                 dados.put("sedacao", "Sedação leve com propofol");
-                dados.put("achados", "Mucosa esofágica, gástrica e duodenal normais");
-                dados.put("biopsias", "Não foram realizadas biópsias");
                 
             } else if (proximo.getExameTipo() instanceof ExameSangue) {
-                // Dados para validadores laboratoriais (Colesterol, Creatinina, Glicose)
-                dados.put("descricao", "Exame de sangue - hemograma completo e bioquímica");
+                // Campos validados pelos validadores laboratoriais: colesterol, creatinina, glicose
+                // Apenas estes 3 campos são obrigatórios e validados
                 dados.put("colesterol", "180.5");  // Valor desejável
                 dados.put("creatinina", "0.9");    // Valor normal
                 dados.put("glicose", "85.0");      // Valor normal
-                dados.put("hemoglobina", "14.2");
-                dados.put("hematocritos", "42.1");
-                dados.put("leucocitos", "7200");
-                dados.put("plaquetas", "280000");
-                dados.put("responsavelTecnico", medicoResponsavel.getNome());
-                dados.put("laboratorio", "Laboratório ST Diagnósticos");
                 
             } else if (proximo.getExameTipo() instanceof org.example.entities.exame.ExameRaioX) {
-                // Dados obrigatórios para Raio-X
+                // Campos obrigatórios validados: descricao, radiologistaAss, imagens (Base64)
                 dados.put("descricao", "Radiografia de tórax PA e perfil. Campos pulmonares limpos, coração de tamanho normal.");
                 dados.put("radiologistaAss", medicoResponsavel.getNome());
                 dados.put("imagens", "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAAA..."); // Base64 simulado
-                dados.put("regiao", "Tórax");
-                dados.put("posicoes", "PA e Perfil");
-                dados.put("tecnica", "Convencional");
                 
             } else if (proximo.getExameTipo() instanceof org.example.entities.exame.ExameRessonanciaMagnetica) {
-                // Dados obrigatórios para Ressonância Magnética
+                // Campos obrigatórios validados: descricao, radiologistaAss, protocolo
+                // Campos condicionais validados: contraste, dosagemContraste (obrigatória se contraste usado)
                 dados.put("descricao", "Ressonância magnética do crânio. Estruturas encefálicas preservadas, sem sinais de lesões.");
                 dados.put("radiologistaAss", medicoResponsavel.getNome());
                 dados.put("protocolo", "T1, T2, FLAIR e DWI");
                 dados.put("contraste", "Gadolínio");
                 dados.put("dosagemContraste", "0.1 mmol/kg");
-                dados.put("campo", "1.5 Tesla");
-                dados.put("regiao", "Crânio");
-                dados.put("sequencias", "T1, T2, FLAIR, DWI");
             }
 
             System.out.println("----------------- Dados do exame preenchidos -----------------" + " " + i);
             System.out.println(dados.toString());
 
             // Criar o laudo antes de emitir
-            LaudoTxt laudoTxt = new LaudoTxt();
+            LaudoPdf laudoPdf = new LaudoPdf();
             
             // Emitir laudo com notificação automática (inclui anexo)
-            lab.emitirLaudoComNotificacao(proximo, dados, laudoTxt);
+            lab.emitirLaudoComNotificacao(proximo, dados, laudoPdf);
             System.out.println("----------------- Laudo emitido e enviado por email com anexo -----------------" + " " + i);
         }
     }

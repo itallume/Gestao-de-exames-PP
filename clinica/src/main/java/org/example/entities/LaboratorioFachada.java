@@ -19,10 +19,8 @@ import java.util.Map;
 
 public class LaboratorioFachada {
     private FilaPrioridadeExame fila;
-    private GeradorId geradorId;
 
     public LaboratorioFachada() {
-        this.geradorId = new GeradorId();
         this.fila = new FilaPrioridadeExame();
     }
 
@@ -30,7 +28,8 @@ public class LaboratorioFachada {
 
     public ExameOrdem requisitarExame(Paciente paciente, Medico medicoSolicitante, Medico medicoSResponsavel,
             ExameProcedimento exameTipo, Prioridade prioridade) {
-        return new ExameOrdem(geradorId.gerarId(), paciente, medicoSolicitante, medicoSResponsavel, exameTipo,
+        int id = GeradorId.getInstance().gerarId();
+        return new ExameOrdem(id, paciente, medicoSolicitante, medicoSResponsavel, exameTipo,
                 prioridade);
     }
 

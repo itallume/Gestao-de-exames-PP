@@ -1,6 +1,5 @@
 package org.example.entities.models;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.example.Enum.Prioridade;
@@ -8,7 +7,6 @@ import org.example.entities.abstracts.ExameProcedimento;
 import org.example.entities.interfaces.ExameVisitor;
 
 import java.util.Date;
-import java.util.List;
 import java.util.Map;
 
 @Data
@@ -32,8 +30,9 @@ public class ExameOrdem {
         this.exameTipo = exameTipo;
         this.prioridade = prioridade;
         
-        // Setar o paciente no exame
+        // Setar o paciente e o ID no exame
         exameTipo.setPaciente(paciente);
+        exameTipo.setId(id);
     }
 
     public Double calcularPreco(ExameVisitor<Double> visitor) {

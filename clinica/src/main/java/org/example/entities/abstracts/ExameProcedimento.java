@@ -1,6 +1,7 @@
 package org.example.entities.abstracts;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -11,8 +12,6 @@ import org.example.entities.interfaces.ExameVisitor;
 import org.example.entities.interfaces.ILaudo;
 import org.example.entities.interfaces.INotificador;
 import org.example.entities.models.Paciente;
-
-import com.itextpdf.layout.Document;
 
 import javax.mail.MessagingException;
 
@@ -41,11 +40,21 @@ public abstract class ExameProcedimento{
         }
     }
 
+    public Object gerarLaudo() {
+        return  laudo.gerarDocumento(this);
+    }
+
+    public Map<String, Object> getDadosParaLaudo() {
+        Map<String, Object> dadosLaudo = new HashMap<>();
+        dadosLaudo.put("dadosBasicos", this.dados);
+        dadosLaudo.put("tipoExame", this.getClass().getSimpleName());
+        dadosLaudo.put("paciente", this.paciente);
+        dadosLaudo.put("id", this.id);
+        dadosLaudo.put("dataRealizacao", this.dataRealizacao);
+        return dadosLaudo;
+    }
+
     public abstract void preencherDados(Map<String, String> dados);
-    public abstract Object gerarLaudo();
     public abstract <T> T aceitar(ExameVisitor<T> visitor);
     public abstract void realizarExame();
-    public abstract Document montarPDF(Document doc, Map<String, String> dados);
-    public abstract StringBuilder montarHtml(StringBuilder html, Map<String, String> dados);
-    public abstract StringBuilder montarTxt(StringBuilder sb, Map<String, String> dados);
 }

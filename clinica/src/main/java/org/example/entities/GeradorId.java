@@ -4,10 +4,10 @@ public class GeradorId {
     private static GeradorId instance = null;
     private int contador = 0;
 
-    GeradorId() {
+    private GeradorId() {
     }
 
-    public GeradorId getInstance() {
+    public static GeradorId getInstance() {
         if (instance == null) {
             instance = new GeradorId();
         }

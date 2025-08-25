@@ -1,0 +1,206 @@
+@startuml Interação dos Padrões de Design
+!theme plain
+title Interação dos Padrões de Design\nSistema de Gestão de Exames Médicos
+
+package "🏗️ Padrões Criacionais" {
+    class GeradorId <<Singleton>> {
+        - instance: GeradorId {static}
+        - contador: int
+        + getInstance(): GeradorId {static}
+        + gerarId(): int
+    }
+}
+
+package "🏛️ Padrões Estruturais" {
+    class LaboratorioFachada <<Facade>> {
+        - fila: FilaPrioridadeExame
+        - geradorId: GeradorId
+        - precoVisitor: ExameVisitor<Double>
+        + requisitarExame(): ExameOrdem
+        + calcularPreco(): double
+        + emitirLaudoComNotificacao(): void
+    }
+    
+    abstract class DescontoBase <<Decorator>> {
+        - wrappee: Desconto
+        + calcularPreco(): Double
+    }
+    
+    class DescontoIdoso <<Decorator>> {
+        + calcularPreco(): Double [8% off]
+    }
+    
+    class DescontoConvenio <<Decorator>> {
+        + calcularPreco(): Double [15% off]
+    }
+    
+    interface ILaudo <<Bridge - Abstraction>> {
+        + gerarDocumento(): Object
+    }
+    
+    class LaudoTxt <<Bridge - ConcreteImplementation>> {
+        + gerarDocumento(): String
+    }
+    
+    class LaudoPdf <<Bridge - ConcreteImplementation>> {
+        + gerarDocumento(): byte[]
+    }
+    
+    abstract class ExameProcedimento <<Bridge - RefinedAbstraction>> {
+        - laudo: ILaudo
+        + gerarLaudo(): Object
+        + montarTxt(): StringBuilder
+        + montarPDF(): Document
+    }
+}
+
+package "🎯 Padrões Comportamentais" {
+    interface InserirExameStrategy <<Strategy>> {
+        + inserir(): void
+    }
+    
+    class InserirUrgente <<Strategy>> {
+        + inserir(): void [priority queue]
+    }
+    
+    class FilaPrioridadeExame <<Strategy Context>> {
+        - strategies: Map<Prioridade, Strategy>
+        + adicionarExame(): void
+    }
+    
+    interface ExameVisitor <<Visitor>> {
+        + visitarExame(): T
+    }
+    
+    class PrecoVisitor <<Visitor>> {
+        + visitarExame(ExameSangue): Double [15.00]
+        + visitarExame(ExameRaioX): Double [70.00]
+        + visitarExame(ExameColonoscopia): Double [400.00]
+    }
+    
+    interface IValidador <<Chain of Responsibility>> {
+        + validar(): void
+        + setProximo(): IValidador
+    }
+    
+    class ValidadorColonoscopia <<Chain Handler>> {
+        + validar(): void [descricao, endoscopista]
+    }
+    
+    class ValidadorFachada <<Chain Client>> {
+        + getChainExameEndoscopico(): IValidador {static}
+        + getChainExameImagem(): IValidador {static}
+    }
+    
+    interface INotificador <<Observer>> {
+        + notificar(): void
+        + notificarComAnexo(): void
+    }
+    
+    class NotificardorEmail <<Observer>> {
+        + notificarComAnexo(): void
+        - criarArquivoLaudo(): File
+    }
+}
+
+package "📊 Modelos de Domínio" {
+    class ExameOrdem {
+        - id: int
+        - paciente: Paciente
+        - exameTipo: ExameProcedimento
+        - prioridade: Prioridade
+    }
+    
+    class Paciente {
+        - nome: String
+        - idade: int
+        - email: String
+    }
+    
+    enum Prioridade {
+        URGENTE
+        POUCO_URGENTE
+        ROTINA
+    }
+}
+
+' ==================== RELACIONAMENTOS ENTRE PADRÕES ====================
+
+' Facade orquestra todos os outros padrões
+LaboratorioFachada ..> GeradorId : <<uses Singleton>>
+LaboratorioFachada ..> FilaPrioridadeExame : <<uses Strategy>>
+LaboratorioFachada ..> PrecoVisitor : <<uses Visitor>>
+LaboratorioFachada ..> DescontoBase : <<uses Decorator>>
+LaboratorioFachada ..> ValidadorFachada : <<uses Chain>>
+LaboratorioFachada ..> ILaudo : <<uses Bridge>>
+
+' Strategy Pattern interactions
+FilaPrioridadeExame --> InserirExameStrategy : <<context uses>>
+InserirUrgente ..|> InserirExameStrategy
+FilaPrioridadeExame --> Prioridade : <<maps to strategy>>
+
+' Decorator Pattern chain
+DescontoIdoso --|> DescontoBase
+DescontoConvenio --|> DescontoBase
+DescontoBase --> DescontoBase : <<wraps>>
+
+' Visitor Pattern
+ExameProcedimento ..> ExameVisitor : <<accepts>>
+PrecoVisitor ..|> ExameVisitor
+
+' Chain of Responsibility
+ValidadorFachada ..> IValidador : <<creates chain>>
+ValidadorColonoscopia ..|> IValidador
+ValidadorColonoscopia --> ValidadorColonoscopia : <<next handler>>
+
+' Bridge Pattern
+ExameProcedimento --> ILaudo : <<uses implementation>>
+LaudoTxt ..|> ILaudo
+LaudoPdf ..|> ILaudo
+
+' Observer Pattern
+ExameProcedimento --> INotificador : <<notifies observers>>
+NotificardorEmail ..|> INotificador
+
+' Domain relationships
+ExameOrdem --> ExameProcedimento : <<contains>>
+ExameOrdem --> Paciente : <<contains>>
+ExameOrdem --> Prioridade : <<has>>
+
+' ==================== FLUXO DE INTERAÇÃO ====================
+note as N1
+**🔄 Fluxo de Interação dos Padrões:**
+
+1️⃣ **Facade** recebe requisição do cliente
+2️⃣ **Singleton** gera ID único para o exame
+3️⃣ **Visitor** calcula preço baseado no tipo
+4️⃣ **Decorator** aplica descontos em camadas
+5️⃣ **Strategy** insere na fila por prioridade
+6️⃣ **Chain** valida dados sequencialmente
+7️⃣ **Bridge** gera laudo no formato escolhido
+8️⃣ **Observer** notifica paciente automaticamente
+end note
+
+note as N2
+**🎯 Benefícios da Arquitetura:**
+
+✅ **Baixo Acoplamento**: Cada padrão resolve uma responsabilidade específica
+✅ **Alta Coesão**: Funcionalidades relacionadas agrupadas
+✅ **Extensibilidade**: Novos tipos facilmente adicionados
+✅ **Testabilidade**: Cada padrão pode ser testado isoladamente
+✅ **Manutenibilidade**: Mudanças localizadas por padrão
+end note
+
+note as N3
+**🔧 Padrões Principais em Ação:**
+
+🏛️ **Facade**: Interface unificada simplifica complexidade
+🎯 **Strategy**: Flexibilidade na inserção por prioridade
+🎨 **Decorator**: Combinação flexível de descontos
+👥 **Visitor**: Operações sobre hierarquia sem modificá-la
+🔗 **Chain**: Validação modular e extensível
+🌉 **Bridge**: Separação entre exames e formatos
+👀 **Observer**: Notificação automática desacoplada
+end note
+
+@enduml

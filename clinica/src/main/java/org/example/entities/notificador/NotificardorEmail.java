@@ -14,8 +14,10 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.Properties;
 
 public class NotificardorEmail implements INotificador {
@@ -111,13 +113,40 @@ public class NotificardorEmail implements INotificador {
             tempDir.mkdirs();
         }
         
-        // Criar arquivo com nome único
-        String nomeArquivo = "Laudo_" + paciente.getNome().replaceAll("\\s+", "_") + "_" + System.currentTimeMillis() + ".txt";
-        File arquivo = new File(tempDir, nomeArquivo);
+        // Determinar extensão baseada no tipo de conteúdo
+        String extensao;
+        String nomeBase = "Laudo_" + paciente.getNome().replaceAll("\\s+", "_") + "_" + System.currentTimeMillis();
         
-        // Escrever conteúdo no arquivo
-        try (FileWriter writer = new FileWriter(arquivo)) {
-            writer.write(laudoConteudo.toString());
+        if (laudoConteudo instanceof byte[]) {
+            // PDF retorna byte[]
+            extensao = ".pdf";
+        } else if (laudoConteudo instanceof String) {
+            String conteudo = (String) laudoConteudo;
+            if (conteudo.startsWith("<!DOCTYPE html") || conteudo.contains("<html")) {
+                // HTML
+                extensao = ".html";
+            } else {
+                // Texto simples
+                extensao = ".txt";
+            }
+        } else {
+            // Fallback para texto
+            extensao = ".txt";
+        }
+        
+        File arquivo = new File(tempDir, nomeBase + extensao);
+        
+        // Escrever conteúdo no arquivo baseado no tipo
+        if (laudoConteudo instanceof byte[]) {
+            // Para PDF (byte array)
+            try (FileOutputStream fos = new FileOutputStream(arquivo)) {
+                fos.write((byte[]) laudoConteudo);
+            }
+        } else {
+            // Para texto/HTML (String)
+            try (FileWriter writer = new FileWriter(arquivo, StandardCharsets.UTF_8)) {
+                writer.write(laudoConteudo.toString());
+            }
         }
         
         return arquivo;
