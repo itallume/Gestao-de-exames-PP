@@ -36,6 +36,10 @@ public class FilaPrioridadeExame {
         return proximoExame;
     }
 
+    public Boolean hasProximo(){
+        return !fila.isEmpty();
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
