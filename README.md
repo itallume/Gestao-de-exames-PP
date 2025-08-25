@@ -26,6 +26,7 @@ O sistema cumpre os requisitos funcionais descritos no enunciado da atividade, t
 - ✅ Notificação automática do paciente (`R6`)
 - ✅ Aplicação de políticas de desconto dinâmicas (`R7`)
 - ✅ Priorização de exames por urgência (`R8`)
+- ✅ Programa principal que simula a execução (`R9`)
 - ✅ Logs da aplicação (`R10`)
 
 ---
@@ -33,16 +34,16 @@ O sistema cumpre os requisitos funcionais descritos no enunciado da atividade, t
 ## 🧩 Padrões de Projeto Utilizados
 
 | Requisito | Padrão | Aplicação |
-|----------|--------|-----------|
+|-----------|--------|-----------|
 | `R1` | **Template Method** | Utilizado em `CarregadorDeDados`, define o esqueleto da leitura de arquivos CSV. Subclasses implementam o método `extrairObjeto(dados)` para pacientes, médicos etc. |
 | `R2` | **Singleton** | `GeradorDeID` garante que a geração de identificadores de exames seja única e centralizada. |
-| `R3 & R4` | **Bridge** | Separação entre abstração (`AExame`) e implementação (`IGerador`) dos formatos de laudo (PDF, HTML, texto etc). Permite adicionar novos exames ou formatos sem alterar o código existente. |
-| `R5` | **Chain of Responsibility** | Encadeamento de validadores (`ValidadorHemograma`, `ValidadorUltrassonografia`, `ValidadorRessonancia`) através da interface `IValidador`. Cada validador aplica regras específicas de exame. |
-| `R6` | **Observer + State** | Padrão Observer notifica o paciente quando o laudo estiver pronto, e o State gerencia o estado da notificação (pendente, enviada, falhou). |
-| `R7` | **Strategy** | Aplicação de políticas de desconto configuráveis (idoso, convênio, campanhas). Estratégias podem ser adicionadas sem alterar a lógica principal. |
-| `R8` | **Priority Queue (Comportamental)** | Fila de prioridade organiza os exames com base em rótulos: URGENTE, POUCO URGENTE e ROTINA. |
-| `R10` | **Singleton** | Armazena os logs da aplicação |
-
+| `R3 & R4` | **Bridge** | Separação entre abstração (`ExameProcedimento`) e implementação (`ILaudo`) dos formatos de laudo (PDF, HTML, texto etc). Permite adicionar novos exames ou formatos sem alterar o código existente. |
+| `R5` | **Chain of Responsibility** | Encadeamento de validadores através da interface `IValidador`. `ValidadorFachada` cria chains específicos para cada tipo de exame (endoscópicos, imagem, laboratorial). |
+| `R6` | **Observer** | Notifica o paciente quando o laudo estiver pronto através da interface `INotificador`. Diferentes implementações (Email, SMS) podem ser adicionadas. |
+| `R7` | **Visitor + Decorator** | **Visitor**: `PrecoVisitor` calcula preços baseados no tipo de exame. **Decorator**: `DescontoBase` e subclasses aplicam descontos combináveis (idoso, convênio, campanhas). |
+| `R8` | **Strategy** | Fila de prioridade (`FilaPrioridadeExame`) usa estratégias de inserção (`InserirExameStrategy`) diferentes para cada nível de prioridade (URGENTE, POUCO URGENTE, ROTINA). |
+| `R9` | **Facade** | `LaboratorioFachada` fornece interface unificada para todas as operações do sistema, simplificando a interação com os subsistemas complexos. |
+| `R10` | **Singleton** | Armazena os logs da aplicação de forma centralizada. |
 ---
 
 ## 📌 Diagrama de Classes
