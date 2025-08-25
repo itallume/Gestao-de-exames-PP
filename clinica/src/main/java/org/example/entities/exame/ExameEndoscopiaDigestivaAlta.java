@@ -54,6 +54,8 @@ public class ExameEndoscopiaDigestivaAlta extends ExameEndoscopico {
         sb.append("Laudo de Endoscopia Digestiva Alta: ").append(dados.getOrDefault("descricao", "—")).append("\n");
         sb.append("Endoscopista responsável: ").append(dados.getOrDefault("endoscopista", "—")).append("\n");
         sb.append("Sedação: ").append(dados.getOrDefault("sedacao", "Não informada")).append("\n");
+        sb.append("Achados: ").append(dados.getOrDefault("achados", "—")).append("\n");
+        sb.append("Biópsias: ").append(dados.getOrDefault("biopsias", "—")).append("\n");
         return sb;
     }
 

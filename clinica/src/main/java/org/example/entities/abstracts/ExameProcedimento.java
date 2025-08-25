@@ -1,15 +1,15 @@
 package org.example.entities.abstracts;
 
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import org.example.entities.interfaces.ExameVisitor;
 import org.example.entities.interfaces.ILaudo;
 import org.example.entities.interfaces.INotificador;
-import org.example.entities.interfaces.IValidador;
 import org.example.entities.models.Paciente;
 
 import com.itextpdf.layout.Document;
@@ -17,6 +17,7 @@ import com.itextpdf.layout.Document;
 import javax.mail.MessagingException;
 
 @Data
+@NoArgsConstructor
 public abstract class ExameProcedimento{
     private int id;
     private ILaudo laudo;

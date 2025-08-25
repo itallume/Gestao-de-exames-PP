@@ -1,8 +1,6 @@
 package org.example.entities.exame;
 
-import org.example.entities.abstracts.ExameEndoscopico;
 import org.example.entities.abstracts.ExameImagem;
-import org.example.entities.abstracts.ExameLaboratorial;
 import org.example.entities.interfaces.ExameVisitor;
 
 import com.itextpdf.layout.Document;
@@ -14,7 +12,7 @@ import java.util.Map;
 public class ExameRessonanciaMagnetica extends ExameImagem {
     @Override
     public void preencherDados(Map<String, String> dados) {
-
+        this.setDados(dados);
     }
 
     @Override
@@ -57,10 +55,16 @@ public class ExameRessonanciaMagnetica extends ExameImagem {
 
     @Override
     public StringBuilder montarTxt(StringBuilder sb, Map<String, String> dados) {
-        sb.append("Laudo de Ressonância: ").append(dados.getOrDefault("descricao", "—")).append("\n");
+        sb.append("Laudo de Ressonância Magnética: ").append(dados.getOrDefault("descricao", "—")).append("\n");
+        sb.append("Região examinada: ").append(dados.getOrDefault("regiao", "—")).append("\n");
+        sb.append("Campo magnético: ").append(dados.getOrDefault("campo", "—")).append("\n");
         sb.append("Protocolo: ").append(dados.getOrDefault("protocolo", "—")).append("\n");
+        sb.append("Sequências: ").append(dados.getOrDefault("sequencias", "—")).append("\n");
         sb.append("Contraste utilizado: ").append(dados.getOrDefault("contraste", "Não")).append("\n");
-        sb.append("Radiologista responsável: ").append(dados.getOrDefault("radiologista", "—")).append("\n");
+        if (dados.containsKey("dosagemContraste") && !dados.get("dosagemContraste").isEmpty()) {
+            sb.append("Dosagem do contraste: ").append(dados.get("dosagemContraste")).append("\n");
+        }
+        sb.append("Radiologista responsável: ").append(dados.getOrDefault("radiologistaAss", "—")).append("\n");
         return sb;
     }
 

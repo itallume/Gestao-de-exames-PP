@@ -31,6 +31,9 @@ public class ExameOrdem {
         this.medicoResponsavel = medicoResponsavel;
         this.exameTipo = exameTipo;
         this.prioridade = prioridade;
+        
+        // Setar o paciente no exame
+        exameTipo.setPaciente(paciente);
     }
 
     public Double calcularPreco(ExameVisitor<Double> visitor) {

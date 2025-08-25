@@ -1,9 +1,8 @@
 package org.example.entities.abstracts;
 
-import java.lang.reflect.Array;
-import java.util.List;
-import java.util.Map;
+import lombok.Data;
 
+@Data
 public abstract class ExameEndoscopico extends ExameProcedimento{
 
     @Override

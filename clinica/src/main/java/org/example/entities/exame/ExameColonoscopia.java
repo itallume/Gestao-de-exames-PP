@@ -10,8 +10,7 @@ import java.util.Map;
 public class ExameColonoscopia extends ExameEndoscopico {
 
     @Override
-    public void preencherDados(Map dados) {
-
+    public void preencherDados(Map<String,String> dados) {
         this.setDados(dados);
     }
 
@@ -55,6 +54,8 @@ public class ExameColonoscopia extends ExameEndoscopico {
         sb.append("Laudo de Colonoscopia: ").append(dados.getOrDefault("descricao", "—")).append("\n");
         sb.append("Endoscopista responsável: ").append(dados.getOrDefault("endoscopista", "—")).append("\n");
         sb.append("Preparo Intestinal: ").append(dados.getOrDefault("preparoIntestinal", "Não informado")).append("\n");
+        sb.append("Sedação: ").append(dados.getOrDefault("sedacao", "Não informada")).append("\n");
+        sb.append("Achados: ").append(dados.getOrDefault("achados", "—")).append("\n");
         return sb;
     }
 

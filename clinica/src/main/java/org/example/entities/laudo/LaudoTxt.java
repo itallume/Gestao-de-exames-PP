@@ -20,23 +20,24 @@ public class LaudoTxt implements ILaudo {
 
         sb.append("===== Laboratório ST Diagnósticos =====\n");
         sb.append("Paciente: ").append(paciente.getNome()).append("\n");
+        sb.append("Idade: ").append(paciente.getIdade()).append(" anos\n");
+        sb.append("Sexo: ").append(paciente.getSexo()).append("\n");
         sb.append("Convênio: ").append(paciente.getConvenio()).append("\n");
+        sb.append("Telefone: ").append(paciente.getTelefone()).append("\n");
         sb.append("Médico Solicitante: ").append(dados.getOrDefault("medicoSolicitante", "—")).append("\n");
-        sb.append("Data: ").append(dataHoje.format(formatter)).append("\n");
-        sb.append("ID do exame: ").append(exameTipo.getId()).append("\n\n");
+        sb.append("Data do Exame: ").append(dataHoje.format(formatter)).append("\n");
+        sb.append("ID do exame: ").append(exameTipo.getId()).append("\n");
+        sb.append("==========================================\n\n");
         sb.append("=== Resultado do Exame ===\n");
 
         String tipo = (String) dados.getOrDefault("tipoExame", "Não especificado");
         sb.append("Tipo de Exame: ").append(tipo).append("\n");
+        sb.append("==========================================\n");
         sb = exameTipo.montarTxt(sb, dados);
-        sb.append("\n=== Médico Responsável ===\n");
-
-        if (exameTipo.getLaudo() != null && exameTipo.getDados() instanceof Map) {
-            Map<String, String> map = (Map<String, String>) exameTipo.getDados();
-            sb.append("Dr(a). ").append(map.getOrDefault("medicoResponsavel", "—")).append("\n");
-        } else {
-            sb.append("—\n");
-        }
+        sb.append("==========================================\n");
+        sb.append("Médico Responsável: Dr(a). ").append(dados.getOrDefault("medicoResponsavel", "—")).append("\n");
+        sb.append("Data de Emissão: ").append(dataHoje.format(formatter)).append("\n");
+        sb.append("==========================================\n");
 
         return sb.toString();
     }

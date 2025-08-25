@@ -79,14 +79,33 @@ public class ExameSangue extends ExameLaboratorial {
 
     @Override
     public StringBuilder montarTxt(StringBuilder sb, Map<String, String> dados) {
-        String resultados = (String) dados.get("resultados");
-        if (resultados != null) {
-            sb.append("Resultado: ").append(resultados).append("\n");
-            sb.append("Valores de Referência: ")
-                    .append(dados.getOrDefault("valoresReferencia", "—")).append("\n");
+        sb.append("=== Hemograma ===\n");
+        sb.append("Hemoglobina: ").append(dados.getOrDefault("hemoglobina", "—")).append(" g/dL\n");
+        sb.append("Hematócritos: ").append(dados.getOrDefault("hematocritos", "—")).append(" %\n");
+        sb.append("Leucócitos: ").append(dados.getOrDefault("leucocitos", "—")).append(" /mm³\n");
+        sb.append("Plaquetas: ").append(dados.getOrDefault("plaquetas", "—")).append(" /mm³\n");
+        
+        sb.append("\n=== Bioquímica ===\n");
+        sb.append("Glicose: ").append(dados.getOrDefault("glicose", "—")).append(" mg/dL");
+        if (dados.containsKey("glicoseDiagnostico")) {
+            sb.append(" - ").append(dados.get("glicoseDiagnostico"));
         }
-        sb.append("Responsável técnico: ")
-                .append(dados.getOrDefault("responsavelTecnico", "—")).append("\n");
+        sb.append("\n");
+        
+        sb.append("Colesterol Total: ").append(dados.getOrDefault("colesterol", "—")).append(" mg/dL");
+        if (dados.containsKey("colesterolDiagnostico")) {
+            sb.append(" - ").append(dados.get("colesterolDiagnostico"));
+        }
+        sb.append("\n");
+        
+        sb.append("Creatinina: ").append(dados.getOrDefault("creatinina", "—")).append(" mg/dL");
+        if (dados.containsKey("creatininaDiagnostico")) {
+            sb.append(" - ").append(dados.get("creatininaDiagnostico"));
+        }
+        sb.append("\n");
+        
+        sb.append("\nLaboratório: ").append(dados.getOrDefault("laboratorio", "—")).append("\n");
+        sb.append("Responsável técnico: ").append(dados.getOrDefault("responsavelTecnico", "—")).append("\n");
         return sb;
     }
 

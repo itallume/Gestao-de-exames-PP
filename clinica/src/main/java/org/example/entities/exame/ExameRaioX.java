@@ -1,9 +1,9 @@
 package org.example.entities.exame;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.example.entities.abstracts.ExameImagem;
 import org.example.entities.interfaces.ExameVisitor;
-import org.example.entities.interfaces.INotificador;
 
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
@@ -11,11 +11,12 @@ import com.itextpdf.layout.element.Paragraph;
 import java.util.Map;
 
 @Data
+@EqualsAndHashCode(callSuper=false)
 public class ExameRaioX extends ExameImagem {
 
     @Override
     public void preencherDados(Map<String, String> dados) {
-
+        this.setDados(dados);
     }
 
     @Override
@@ -54,7 +55,11 @@ public class ExameRaioX extends ExameImagem {
     @Override
     public StringBuilder montarTxt(StringBuilder sb, Map<String, String> dados) {
         sb.append("Laudo radiológico: ").append(dados.getOrDefault("descricao", "—")).append("\n");
-        sb.append("Radiologista responsável: ").append(dados.getOrDefault("radiologista", "—")).append("\n");
+        sb.append("Região examinada: ").append(dados.getOrDefault("regiao", "—")).append("\n");
+        sb.append("Posições: ").append(dados.getOrDefault("posicoes", "—")).append("\n");
+        sb.append("Técnica: ").append(dados.getOrDefault("tecnica", "—")).append("\n");
+        sb.append("Radiologista responsável: ").append(dados.getOrDefault("radiologistaAss", "—")).append("\n");
+        sb.append("Imagens anexadas: ").append(dados.containsKey("imagens") ? "Sim" : "Não").append("\n");
         return sb;
     }
 
